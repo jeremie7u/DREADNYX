@@ -1,6 +1,6 @@
-# AKARAN-7K
+# DREADNYX
 
-AKARAN-7K est un puissant bot WhatsApp multi-fonctions conçu pour la gestion avancée de groupes, l'automatisation, l'intelligence artificielle, et l'amusement. Développé avec l'API non officielle Baileys, il permet une connexion facile par QR Code ou code pair.
+DREADNYX est un puissant bot WhatsApp multi-fonctions conçu pour la gestion avancée de groupes, l'automatisation, LES BUGS,l'intelligence artificielle, et l'amusement. Développé avec l'API non officielle Baileys, il permet une connexion facile par QR Code ou code pair.
 
 ---
 
@@ -21,6 +21,6 @@ AKARAN-7K est un puissant bot WhatsApp multi-fonctions conçu pour la gestion av
 ## ⚙️ Installation
 
 ```bash
-git clone https://github.com/votre-utilisateur/akaran-7k
-cd akaran-7k
+git clone https://github.com/jeremie7u/dreadnyx
+cd dreadnyx
 npm install
