@@ -12,7 +12,7 @@ DREADNYX est un puissant bot WhatsApp multi-fonctions conçu pour la gestion ava
 - **Plugins dynamiques** : installation, suppression, liste de plugins personnalisés.
 - **Multimédia** : téléchargement depuis TikTok, YouTube, Facebook, Instagram, Spotify, etc.
 - **Fun & Réactions** : caliner, pleurer, embrasser, gifs, quizz, jeux de mots, énigmes.
-- **Recherche Web** : Google, YouTube, APK, Stickers, Images, Sons, Vidéos.
+- **Recherche Web** : Google, YouTube, APK, Stickers, Images, Sons, Vidéos...
 - **Commandes avancées** : look (vue unique), save, auto-push Git, etc.
 - **Personnalisation** : nom du bot, préfixes, variables Heroku, système d’avertissement.
 
