@@ -1,10 +1,10 @@
 ‎<h1 align="center">DREADNYX <br></h1>
 ‎<p align="center">
-‎<img src="https://files.catbox.moe/j4tls5.mp4" height="300" />
+‎<img src="https://files.catbox.moe/j4tls5.gif" height="300" />
 ‎</p>
 ‎
 ‎<p align="center">
-‎Dreadnyx Multi Device is a automated whatsapp bot created by <a href="https://github.com/jeremie7u" target="_blank">dreadnyx</a> using <a href="https://github.com/adiwajshing/Baileys" target="_blank">Baileys</a> and <a href="https://github.com/nodejs" target="_blank">Nodejs And cheems v70</a>. Dont forget to give a star bro.
+‎Dreadnyx Multi Device is a automated whatsapp bot created by <a href="https://github.com/jeremie7u" target="_blank">jeremie7u</a> using <a href="https://github.com/adiwajshing/Baileys" target="_blank">Baileys</a> and <a href="https://github.com/nodejs" target="_blank">Nodejs And cheems v70</a>. Dont forget to give a star bro.
 ‎</p>
 ‎
 ‎<p align="center">
@@ -123,7 +123,8 @@
 ‎## `For 24/7 Activation (Termux)`
 ‎```bash
 ‎npm i -g pm2
-‎pm2 start index.js
-‎pm2 save
-‎pm2 logs
+termux-wake-lock
+pm2 start index.js --name=dreadnyx
+pm2 save
+pm2 startup
 ‎```
