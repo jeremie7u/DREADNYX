@@ -1,6 +1,6 @@
 ‎<h1 align="center">DREADNYX <br></h1>
 ‎<p align="center">
-‎<img src="https://GIF-250520_182405.gif" height="300" />
+‎<img src="https://t.me/dreadtesting/53.gif" height="300" />
 ‎</p>
 ‎
 ‎<p align="center">
