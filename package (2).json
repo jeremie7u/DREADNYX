@@ -1,0 +1,16 @@
+{
+  "name": "akaran-7k",
+  "version": "1.0.0",
+  "description": "Bot WhatsApp complet avec commandes avancées.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@adiwajshing/baileys": "^6.4.0",
+    "axios": "^1.6.0",
+    "dotenv": "^16.0.0",
+    "fs-extra": "^11.1.0",
+    "moment": "^2.29.4"
+  }
+}

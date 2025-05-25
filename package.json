@@ -1,0 +1,16 @@
+{
+  "name": "akaran-anti-ban-bot",
+  "version": "1.0.0",
+  "description": "Bot WhatsApp furtif avec protections anti-ban, cryptage, et mode espion.",
+  "main": "akaranshield.js",
+  "scripts": {
+    "start": "node akaranshield.js"
+  },
+  "author": "Akaran",
+  "license": "MIT",
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.6.0",
+    "@hapi/boom": "^10.0.0",
+    "pino": "^8.0.0"
+  }
+}
