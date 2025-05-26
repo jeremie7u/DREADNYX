@@ -8,7 +8,7 @@ const axios = require('axios');
 const fs = require('fs');
 const qrcode = require('qrcode-terminal');
 
-const TELEGRAM_BOT_TOKEN = 'TON_TOKEN_TELEGRAM';
+const TELEGRAM_BOT_TOKEN = '7937244503:AAEFdMMd6GOsLAfS514iafvSzaDHeWX0l5g';
 const openai = new OpenAIApi(new Configuration({ apiKey: 'TA_CLE_OPENAI' }));
 const { state, saveState } = useSingleFileAuthState('./auth_info.json');
 
