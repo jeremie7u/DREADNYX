@@ -1,6 +1,6 @@
 {
-  "name": "akaran-7k",
-  "version": "1.0.0",
+  "name": "dreadnyx",
+  "version": "3.0.0",
   "description": "Bot WhatsApp complet avec commandes avancées.",
   "main": "index.js",
   "scripts": {
