@@ -1,6 +1,6 @@
 <h1 align="center">DREADNYX <br></h1>
 <p align="center">
-<img src="https://pixabay.com/fr/illustrations/anubis-egypte-pharaon-ancien-8510021/" height="300" />
+<img src="https://pixabay.com/fr/illustrations/anubis-egypte-pharaon-ancien-8510021.png/" height="300" />
 </p>
 
 <p align="center">
@@ -61,3 +61,12 @@ Dreadnyx Multi Device est un bot WhatsApp automatisé créé par <a href="https:
 git clone https://github.com/jeremie7u/DREADNYX.git
 cd DREADNYX
 npm start
+
+## `For 24/7 Activation (Termux)`
+‎```bash
+‎npm i -g pm2
+‎termux-wake-lock
+‎pm2 start index.js --name=dreadnyx
+‎pm2 save
+‎pm2 startup
+‎```
