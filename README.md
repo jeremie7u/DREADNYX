@@ -1,6 +1,8 @@
 <h1 align="center">DREADNYX <br></h1>
 <p align="center">
-<img src="https://pixabay.com/fr/illustrations/anubis-egypte-pharaon-ancien-8510021.png/" height="300" />
+  
+![banner](dreadnyx.jpg)
+
 </p>
 
 <p align="center">
