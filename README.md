@@ -1,7 +1,7 @@
 <h1 align="center">DREADNYX <br></h1>
 <p align="center">
   
-![banner](thanosdread.gif)
+![banner](dreadnyx.jpg)
 
 <p align="center">
 Dreadnyx Multi Device est un bot WhatsApp automatisé créé par <a href="https://github.com/jeremie7u" target="_blank">dreadnyx</a> utilisant <a href="https://github.com/adiwajshing/Baileys" target="_blank">Baileys</a> et <a href="https://github.com/nodejs" target="_blank">Node.js et Cheems v70</a>. N'oubliez pas de laisser une étoile !
