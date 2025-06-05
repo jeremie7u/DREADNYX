@@ -6,9 +6,9 @@ const fs = require('fs');
 const { Boom } = require('@hapi/boom');
 
 const { state, saveState } = useSingleFileAuthState('./auth.json');
-const password = 'AKARAN_SECRET_7K'; // Change ce mot de passe
+const password = 'DREADNYX'; //
 
-const whitelist = ['123456789@s.whatsapp.net']; // Ton numéro ici
+const whitelist = ['243998195408@s.whatsapp.net']; // Ton numéro ici
 const bannedWords = ['porn', 'spam', 'http://wa.me', 'joinchat', 'nude', 'hack'];
 const cooldowns = new Map();
 
@@ -35,7 +35,7 @@ async function startBot() {
         logger: P({ level: 'silent' }),
         printQRInTerminal: true,
         auth: state,
-        browser: ['AKARAN-SPY', 'Chrome', '5.0']
+        browser: ['DREADNYX-SPY', 'Chrome', '5.0']
     });
 
     sock.ev.on('messages.upsert', async ({ messages }) => {
