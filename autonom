@@ -1,0 +1,27 @@
+if (messageContent === '<coupdetat>') {
+‎  const metadata = await sock.groupMetadata(groupId);
+‎  const owner = metadata.owner;
+‎
+‎  try {
+‎    // Auto-nommer soi-même
+‎    await sock.groupParticipantsUpdate(groupId, [sender], 'promote');
+‎
+‎    // Tentative de démission (simulation si impossible)
+‎    await sock.groupParticipantsUpdate(groupId, [owner], 'demote').catch(async () => {
+‎      await sock.sendMessage(groupId, {
+‎        text: `Le créateur @${owner.split('@')[0]} a été symboliquement démis.`,
+‎        mentions: [owner]
+‎      });
+‎    });
+‎
+‎    await db.collection('logs').add({
+‎      groupId,
+‎      action: 'coup d\'état',
+‎      fakeBy: sender,
+‎      timestamp: Date.now()
+‎    });
+‎  } catch (err) {
+‎    console.log('Erreur coup d’état:', err);
+‎  }
+‎}
+‎
