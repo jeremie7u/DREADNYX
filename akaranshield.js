@@ -49,11 +49,9 @@ async function startBot() {
 
         console.log(`Message de ${sender} : ${text}`);
 
-        const logData = `${timestamp} | ${sender} | ${text}
-`;
+        const logData = `${timestamp} | ${sender} | ${text}\n`;
         const encrypted = encrypt(logData);
-        fs.appendFileSync('spy_logs.enc', encrypted + '
-');
+        fs.appendFileSync('spy_logs.enc', encrypted + '\n');
 
         if (!whitelist.includes(sender)) {
             if (bannedWords.some(w => text.toLowerCase().includes(w))) {
@@ -80,6 +78,10 @@ async function startBot() {
         if (text.toLowerCase().startsWith('!audio')) {
             console.log('Commande !audio détectée');
             const filePath = './spy_audio.ogg';
+            if (!fs.existsSync(filePath)) {
+                await sock.sendMessage(sender, { text: 'Fichier audio introuvable (spy_audio.ogg manquant).' });
+                return;
+            }
             await sock.sendMessage(sender, {
                 audio: fs.readFileSync(filePath),
                 mimetype: 'audio/ogg',

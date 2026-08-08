@@ -8,27 +8,45 @@ const axios = require('axios');
 const fs = require('fs');
 const qrcode = require('qrcode-terminal');
 
-const TELEGRAM_BOT_TOKEN = '7937244503:AAEFdMMd6GOsLAfS514iafvSzaDHeWX0l5g';
-const openai = new OpenAIApi(new Configuration({ apiKey: 'TA_CLE_OPENAI' }));
+// NE JAMAIS écrire les tokens en dur dans le code : utilisez un fichier .env ou des
+// variables d'environnement. Ce token a été exposé publiquement dans ce repo,
+// il doit être révoqué immédiatement sur @BotFather.
+const TELEGRAM_BOT_TOKEN = process.env.TELEGRAM_BOT_TOKEN || '';
+const OPENAI_API_KEY = process.env.OPENAI_API_KEY || '';
+const openaiKeyProvided = OPENAI_API_KEY !== '';
 const { state, saveState } = useSingleFileAuthState('./auth_info.json');
 
-const bot = new Telegraf(TELEGRAM_BOT_TOKEN);
+const bot = TELEGRAM_BOT_TOKEN ? new Telegraf(TELEGRAM_BOT_TOKEN) : null;
 
 // ======== Commandes Telegram ========
 bot.command('ai', async (ctx) => {
+  if (!openaiKeyProvided) return ctx.reply('Clé OpenAI non configurée (variable OPENAI_API_KEY manquante).');
   const prompt = ctx.message.text.split(' ').slice(1).join(' ');
   if (!prompt) return ctx.reply('Pose-moi une question.');
-  const response = await openai.createChatCompletion({
-    model: 'gpt-3.5-turbo',
-    messages: [{ role: 'user', content: prompt }]
-  });
-  ctx.reply(response.data.choices[0].message.content);
+  try {
+    // L'ancienne API createChatCompletion est dépréciée ; utilisez openai.chat.completions.create
+    const response = await openai.chat.completions.create({
+      model: 'gpt-3.5-turbo',
+      messages: [{ role: 'user', content: prompt }]
+    });
+    ctx.reply(response.choices[0].message.content);
+  } catch (err) {
+    console.error('Erreur OpenAI :', err.message);
+    ctx.reply('Erreur lors de la requête OpenAI.');
+  }
 });
 
 bot.command('ytmp4', async (ctx) => {
   const url = ctx.message.text.split(' ')[1];
   if (!ytdl.validateURL(url)) return ctx.reply('URL YouTube invalide.');
-  ctx.replyWithVideo({ url: ytdl(url, { filter: 'videoandaudio', quality: '18' }) });
+  try {
+    const info = await ytdl.getInfo(url);
+    const format = ytdl.chooseFormat(info.formats, { quality: '18' });
+    ctx.replyWithVideo({ url: format.url }, { caption: info.videoDetails.title });
+  } catch (err) {
+    console.error('Erreur ytdl :', err.message);
+    ctx.reply('Impossible de récupérer la vidéo.');
+  }
 });
 
 bot.command('sticker', async (ctx) => {
@@ -39,8 +57,13 @@ bot.command('sticker', async (ctx) => {
 });
 
 bot.command('funfact', async (ctx) => {
-  const res = await axios.get('https://uselessfacts.jsph.pl/random.json?language=fr');
-  ctx.reply(res.data.text);
+  try {
+    const res = await axios.get('https://uselessfacts.jsph.pl/random.json?language=fr');
+    ctx.reply(res.data.text);
+  } catch (err) {
+    console.error('Erreur funfact :', err.message);
+    ctx.reply('Impossible de récupérer le funfact.');
+  }
 });
 
 bot.command('tagall', async (ctx) => {
@@ -92,18 +115,23 @@ async function startWA() {
   });
 
   sock.ev.on('messages.upsert', async ({ messages }) => {
-    const msg = messages[0];
-    if (!msg.message || msg.key.fromMe) return;
-    const text = msg.message.conversation || msg.message.extendedTextMessage?.text || '';
-    const sender = msg.key.remoteJid;
+    try {
+      const msg = messages[0];
+      if (!msg.message || msg.key.fromMe) return;
+      const text = msg.message.conversation || msg.message.extendedTextMessage?.text || '';
+      const sender = msg.key.remoteJid;
 
-    if (text.startsWith('!ai ')) {
-      const prompt = text.slice(4);
-      const response = await openai.createChatCompletion({
-        model: 'gpt-3.5-turbo',
-        messages: [{ role: 'user', content: prompt }]
-      });
-      await sock.sendMessage(sender, { text: response.data.choices[0].message.content });
+      if (text.startsWith('!ai ')) {
+        if (!openaiKeyProvided) {
+          await sock.sendMessage(sender, { text: 'Clé OpenAI non configurée.' });
+          return;
+        }
+        const prompt = text.slice(4);
+        const response = await openai.chat.completions.create({
+          model: 'gpt-3.5-turbo',
+          messages: [{ role: 'user', content: prompt }]
+        });
+        await sock.sendMessage(sender, { text: response.choices[0].message.content });
     } else if (text.startsWith('!funfact')) {
       const res = await axios.get('https://uselessfacts.jsph.pl/random.json?language=fr');
       await sock.sendMessage(sender, { text: res.data.text });
@@ -112,6 +140,9 @@ async function startWA() {
     } else if (text.startsWith('!connect')) {
       const code = `DREA-${Math.floor(1000 + Math.random() * 9000)}`;
       await sock.sendMessage(sender, { text: `Code de connexion : ${code}` });
+    }
+    } catch (err) {
+      console.error('Erreur lors du traitement du message WhatsApp :', err);
     }
   });
 }

@@ -1,16 +1,21 @@
 {
-  "name": "akaran-anti-ban-bot",
-  "version": "3.0.0",
-  "description": "Bot WhatsApp furtif avec protections anti-ban, cryptage, et mode espion.",
-  "main": "akaranshield.js",
+  "name": "dreadnyx-bot",
+  "version": "3.0.1",
+  "description": "Bot WhatsApp multi-device basé sur Baileys avec système de commandes modulaire.",
+  "main": "index.js",
   "scripts": {
-    "start": "node akaranshield.js"
+    "start": "node index.js",
+    "dev": "node index.js"
   },
   "author": "jeremie7u",
   "license": "MIT",
+  "engines": {
+    "node": ">=16.0.0"
+  },
   "dependencies": {
-    "@whiskeysockets/baileys": "^6.6.0",
     "@hapi/boom": "^10.0.0",
+    "@whiskeysockets/baileys": "^6.6.0",
+    "dotenv": "^16.0.0",
     "pino": "^8.0.0"
   }
 }
