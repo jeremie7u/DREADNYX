@@ -1,72 +1,133 @@
-<h1 align="center">DREADNYX <br></h1>
-<p align="center">
-  
+# DREADNYX
+
+<div align="center">
+
 ![banner](dreadnyx.jpg)
 
-<p align="center">
-Dreadnyx Multi Device est un bot WhatsApp automatisé créé par <a href="https://github.com/jeremie7u" target="_blank">dreadnyx</a> utilisant <a href="https://github.com/adiwajshing/Baileys" target="_blank">Baileys</a> et <a href="https://github.com/nodejs" target="_blank">Node.js et Cheems v70</a>. N'oubliez pas de laisser une étoile !
-</p>
+**Bot WhatsApp multi-device** construit avec [Baileys](https://github.com/WhiskeySockets/Baileys) et [Node.js](https://nodejs.org/).
 
-<p align="center">
-<a href="https://www.youtube.com/@Honor%C3%A9%C3%89minent?si=HBG2WzpWO-2cBBkJ"><img title="Size" src="https://img.shields.io/badge/Tutoriel-Vidéo-vert"></a>
-</p>
+[![Stars](https://img.shields.io/github/stars/jeremie7u/DREADNYX?style=flat-square&color=yellow)](https://github.com/jeremie7u/DREADNYX/stargazers)
+[![Forks](https://img.shields.io/github/forks/jeremie7u/DREADNYX?style=flat-square&color=green)](https://github.com/jeremie7u/DREADNYX/network/members)
+[![Taille](https://img.shields.io/github/repo-size/jeremie7u/DREADNYX?style=flat-square&color=blue)](https://github.com/jeremie7u/DREADNYX)
+[![Version](https://img.shields.io/github/package-json/v/jeremie7u/DREADNYX?style=flat-square&color=red)](https://github.com/jeremie7u/DREADNYX/blob/main/package.json)
+[![Licence](https://img.shields.io/github/license/jeremie7u/DREADNYX?style=flat-square)](https://github.com/jeremie7u/DREADNYX/blob/main/LICENSE)
 
-### Hébergement du bot ou Katabump 0 coins ? Téléchargez ceci :
+Créé par [jeremie7u](https://github.com/jeremie7u) · N'oubliez pas de laisser une étoile ! ⭐
 
-<a href="https://files.catbox.moe/6pvmoj.jpg"><img src="https://img.shields.io/badge/DREADNYX-rouge" alt="Cliquez ici pour obtenir le QR-Code" width="90"></a>
+</div>
 
-------
+## Table des matières
 
-# ```Infos du bot```
-<p align="center">
-<a href="https://github.com/jeremie7u/followers"><img title="Followers" src="https://img.shields.io/github/followers/jeremie7u?color=yellow&style=flat-square"></a>
-<a href="https://github.com/jeremie7u/DREADNYX/stargazers/"><img title="Stars" src="https://img.shields.io/github/stars/jeremie7u/DREADNYX?color=green&style=flat-square"></a>
-<a href="https://github.com/jeremie7u/DREADNYX/network/members"><img title="Forks" src="https://img.shields.io/github/forks/jeremie7u/DREADNYX?color=yellow&style=flat-square"></a>
-<a href="https://github.com/jeremie7u/DREADNYX/watchers"><img title="Watching" src="https://img.shields.io/github/watchers/jeremie7u/DREADNYX?label=Watchers&color=green&style=flat-square"></a>
-<a href="https://github.com/jeremie7u/DREADNYX"><img title="Open Source" src="https://img.shields.io/badge/Auteur-dreadnyx%20Bot%20Inc.-rouge?v=103"></a>
-<a href="https://github.com/jeremie7u/DREADNYX/"><img title="Size" src="https://img.shields.io/github/repo-size/jeremie7u/DREADNYX?style=flat-square&color=green"></a>
-<a href="https://hits.seeyoufarm.com"><img src="https://hits.seeyoufarm.com/api/count/incr/badge.svg?url=https%3A%2F%2Fgithub.com%2Fjeremie7u%2FDREADNYX&count_bg=%2379C83D&title_bg=%23555555&icon=probot.svg&icon_color=%2300FF6D&title=hits&edge_flat=false"/></a>
-<a href="https://github.com/jeremie7u/DREADNYX/graphs/commit-activity"><img height="20" src="https://img.shields.io/badge/Maintenu%3F-oui-vert.svg"></a>&nbsp;&nbsp;
-</p>
+- [Fonctionnalités](#fonctionnalités)
+- [Installation](#installation)
+- [Utilisation](#utilisation)
+- [Système de commandes](#système-de-commandes)
+- [Configuration](#configuration)
+- [Problèmes connus et solutions](#problèmes-connus-et-solutions)
+- [Sécurité](#sécurité)
+- [Me contacter](#me-contacter)
 
-<p align='center'>
-    </p>
-<p align="center"><img src="https://profile-counter.glitch.me/{DREADNYX}/count.svg" alt="jeremie7u :: Compteur de visiteurs" /></p>
+## Fonctionnalités
 
--------
+- Connexion WhatsApp via **QR code** (Baileys multi-device)
+- Système de **commandes modulaires** : chaque commande est un fichier `.js` dans le dossier `commands/`
+- **Reconnexion automatique** en cas de déconnexion
+- Chargement dynamique des commandes avec gestion d'erreurs (une commande cassée ne fait plus tomber tout le bot)
+- Support multi-langages et scripts de crash-testing (voir `crasher.js`)
+- Exemples de scripts Python et Node pour l'automatisation
 
-## ```Me contacter```
-<p align="center">
-<a href="https://www.youtube.com/@Honor%C3%A9%C3%89minent"><img src="https://img.shields.io/badge/YouTube-ff0000?style=for-the-badge&logo=youtube&logoColor=ff000000&link=https://www.youtube.com/@HonoréÉminent" /><br>
-<a href="https://whatsapp.com/channel/0029Vb5ZMUJJUM2bhqMKPH1H"><img src="https://img.shields.io/badge/WhatsApp Channel-25D366?style=for-the-badge&logo=whatsapp&logoColor=white&link=https://whatsapp.com/channel/0029Vb5ZMUJJUM2bhqMKPH1H" /><br>
-<a href="https://t.me/Jeremie_7k"><img src="https://img.shields.io/badge/Telegram-00FFFF?style=for-the-badge&logo=telegram&logoColor=white" />
-<a href="https://chat.whatsapp.com/C6pWKvDfFRTAXScxTGFqvP"><img src="https://img.shields.io/badge/Groupe de support-25D366?style=for-the-badge&logo=whatsapp&logoColor=green" />
-<a href="https://www.instagram.com/jeremie_septk?igsh=NzMxdjg2cHY0bHoy" />
-</p>
+## Installation
 
-## ```Mon Channel```
-- [`Whatsapp Channel`](https://whatsapp.com/channel/0029Vb5ZMUJJUM2bhqMKPH1H)
-- [`Telegram Channel`](https://t.me/dreadtesting)
+### Pré-requis
 
-# Installation Manuelle 👇
-## `Pré-requis`
-* [Node.js](https://nodejs.org/en/)
-* [Git](https://git-scm.com/downloads)
-* [FFmpeg](https://github.com/BtbN/FFmpeg-Builds/releases/download/autobuild-2020-12-08-13-03/ffmpeg-n4.3.1-26-gca55240b8c-win64-gpl-4.3.zip)
-* [Libwebp](https://developers.google.com/speed/webp/download)
-* Un éditeur de texte
+| Dépendance | Pourquoi |
+|---|---|
+| [Node.js](https://nodejs.org/) ≥ 16 | Runtime JavaScript |
+| [Git](https://git-scm.com/downloads) | Cloner le dépôt |
+| [FFmpeg](https://ffmpeg.org/download.html) | Traitement audio/vidéo |
+| Un éditeur de texte | Modifier la configuration |
 
-## `Cloner le repo & installer les dépendances`
+### Étapes
+
 ```bash
+# 1. Cloner le dépôt
 git clone https://github.com/jeremie7u/DREADNYX.git
 cd DREADNYX
-npm start
 
-## `For 24/7 Activation (Termux)`
-‎```bash
-‎npm i -g pm2
-‎termux-wake-lock
-‎pm2 start index.js --name=dreadnyx
-‎pm2 save
-‎pm2 startup
-‎```
+# 2. Installer les dépendances
+npm install
+
+# 3. Démarrer le bot
+npm start
+```
+
+Au premier démarrage, un **QR code** s'affiche dans le terminal : scannez-le avec WhatsApp (Paramètres → Appareils liés → Lier un appareil).
+
+### Activation 24/7 (Termux)
+
+```bash
+npm i -g pm2
+termux-wake-lock
+pm2 start index.js --name=dreadnyx
+pm2 save
+pm2 startup
+```
+
+## Utilisation
+
+Le bot écoute les messages commençant par `.`. Ajoutez vos commandes dans le dossier `commands/` :
+
+```js
+// commands/ping.js — exemple
+module.exports = {
+  name: 'ping',
+  description: 'Affiche la latence du bot.',
+  execute: async (sock, msg, args) => {
+    await sock.sendMessage(msg.key.remoteJid, { text: 'Pong !' });
+  }
+};
+```
+
+## Configuration
+
+| Fichier | Rôle |
+|---|---|
+| `settings.js` | Numéro du propriétaire, liens, messages prédéfinis |
+| `index.js` | Point d'entrée principal du bot |
+| `package.json` | Dépendances et scripts npm |
+| `crasher.js` | Module de crash-testing (importé par bot.js) |
+| `commands/` | Dossier des commandes modulaires |
+
+## Problèmes connus et solutions
+
+| Problème | Solution |
+|---|---|
+| `MODULE_NOT_FOUND: dotenv` | Exécuter `npm install` après le clone |
+| `Cannot find module '@adiwajshing/baileys'` | Le package `@adiwajshing/baileys` n'est plus maintenu (dernière version 5.0.0). Le projet utilise désormais `@whiskeysockets/baileys` |
+| SyntaxError dans `settings.js` | Corrigé : l'objet `global.msg` manquait son accolade ouvrante `{` |
+| Le dossier `commands/` est vide | Créer le dossier et y ajouter des fichiers `.js` au format montré plus haut |
+| Les fichiers du dossier `all/` sont absents | `crasher.js` dépend du dossier `all/` (functions, database, converters) qui n'est pas inclus dans ce dépôt. Copiez-le depuis votre installation complète |
+
+## Sécurité
+
+> ⚠️ **Important** : ne commitez jamais de tokens, clés API ou numéros de téléphone en clair dans le code.
+> `bot.js` contenait un token Telegram bot exposé publiquement — il a été remplacé par une lecture depuis la variable d'environnement `TELEGRAM_BOT_TOKEN`. **Révoquez l'ancien token immédiatement** sur [@BotFather](https://t.me/BotFather).
+
+Utilisez un fichier `.env` (déjà supporté via `dotenv`) pour vos valeurs sensibles :
+
+```env
+TELEGRAM_BOT_TOKEN=votre_token_ici
+OPENAI_API_KEY=votre_cle_ici
+```
+
+## Me contacter
+
+- [YouTube](https://www.youtube.com/@Honor%C3%A9%C3%89minent)
+- [Channel WhatsApp](https://whatsapp.com/channel/0029Vb5ZMUJJUM2bhqMKPH1H)
+- [Telegram](https://t.me/Jeremie_7k)
+- [Groupe de support](https://chat.whatsapp.com/C6pWKvDfFRTAXScxTGFqvP)
+- [Instagram](https://www.instagram.com/jeremie_septk)
+
+---
+
+© 2025-2026 **Jeremie** · Licence MIT

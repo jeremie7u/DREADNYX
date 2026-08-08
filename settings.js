@@ -40,17 +40,17 @@ global.egg = "15"
 global.loc = "1"
 
 //========= Setting Message =========//
-global.msg = 
+global.msg = {
 "error": "soumets-toi..",
 "done": "Succes ✅", 
-"wait": "le bot est en cours d'envoi  . . .", 
-"group": "<tu veux devenir premium? Suis-moi d’abord>\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b", 
-"private":"<tu veux devenir premium? Suis-moi d’abord>\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b", 
-"admin": "<tu veux devenir premium? Suis-moi d’abord>\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b", 
-"adminbot": "<tu veux devenir premium? Suis-moi d’abord>\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b", 
-"owner": "<tu veux devenir premium? Suis-moi d’abord>\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b", 
-"developer": "<tu veux devenir premium? Suis-moi d’abord>\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b", 
-"premium": "<tu veux devenir premium? Suis-moi d’abord>\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b"
+"wait": "le bot est en cours d'envoi . . .",
+"group": "tu veux devenir premium ? Suis-moi d'abord\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b", 
+"private":"tu veux devenir premium ? Suis-moi d'abord\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b", 
+"admin": "tu veux devenir premium ? Suis-moi d'abord\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b", 
+"adminbot": "tu veux devenir premium ? Suis-moi d'abord\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b", 
+"owner": "tu veux devenir premium ? Suis-moi d'abord\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b", 
+"developer": "tu veux devenir premium ? Suis-moi d'abord\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b", 
+"premium": "tu veux devenir premium ? Suis-moi d'abord\n\nhttps://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b"
 
 }
 
