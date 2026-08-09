@@ -1,12 +1,11 @@
-// Exemple de commande modulaire pour DREADNYX
-// Format attendu : module.exports = { name, description, execute(sock, msg, args) }
-
+// Commande adaptée de ZOKOU : .ping — latence du bot
 module.exports = {
   name: 'ping',
-  description: "Affiche la latence du bot (exemple).",
+  description: 'Affiche la latence du bot (ms).',
   execute: async (sock, msg, args) => {
     const start = Date.now();
-    await sock.sendMessage(msg.key.remoteJid, { text: 'Pong !' });
-    console.log(`Latence : ${Date.now() - start} ms`);
+    const reply = await sock.sendMessage(msg.key.remoteJid, { text: '🏓 Pong...' });
+    const latency = Date.now() - start;
+    await sock.sendMessage(msg.key.remoteJid, { text: `✅ Pong ! Latence : *${latency} ms*`, quoted: reply });
   }
 };

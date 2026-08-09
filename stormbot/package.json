@@ -1,0 +1,20 @@
+{
+  "name": "dreadnyx-stormbot",
+  "version": "2.0.0",
+  "description": "Testeur de résilience WhatsApp (message storm) — USAGE UNIQUEMENT sur vos propres comptes et groupes de test.",
+  "main": "index.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "whatsapp-web.js": "^1.26.1-alpha.0",
+    "qrcode-terminal": "^0.12.0",
+    "puppeteer": "^22.15.0"
+  },
+  "license": "MIT",
+  "note": "puppeteer est indispensable : whatsapp-web.js repose sur un client Chrome headless. Le fichier d'origine ne le déclarait pas, ce qui faisait crasher le bot à l'installation."
+}

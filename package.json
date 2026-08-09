@@ -5,7 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "node index.js"
+    "dev": "node index.js",
+    "storm": "cd stormbot && npm start",
+    "storm:install": "cd stormbot && npm install"
   },
   "author": "jeremie7u",
   "license": "MIT",
@@ -15,7 +17,11 @@
   "dependencies": {
     "@hapi/boom": "^10.0.0",
     "@whiskeysockets/baileys": "^6.6.0",
+    "axios": "^1.19.0",
     "dotenv": "^16.0.0",
-    "pino": "^8.0.0"
+    "google-tts-api": "^2.0.2",
+    "pino": "^8.0.0",
+    "yt-search": "^2.13.1",
+    "ytdl-core": "^4.11.5"
   }
 }

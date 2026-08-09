@@ -131,3 +131,17 @@ OPENAI_API_KEY=votre_cle_ici
 ---
 
 © 2025-2026 **Jeremie** · Licence MIT
+
+## Nouveautés v3.0.2
+
+- **Connexion par code de paire (OTP)** : démarrez avec `CONNECT_MODE=pairing npm start`, entrez votre numéro dans le terminal et validez le code à 8 caractères sur votre téléphone. Le QR code reste le mode par défaut.
+- **10 nouvelles commandes inspirées de ZOKOU** (réécrites proprement pour DREADNYX) : `.menu`, `.ping`, `.afk`, `.warn`, `.pp`, `.groupe`, `.play`, `.tts`, `.devinette`, `.sticker`, `.quote`
+- **Module StormBot** (`stormbot/`) : testeur de résilience WhatsApp basé sur whatsapp-web.js (voir `stormbot/README.md`)
+- **Déploiement identique à Zokou** : Heroku (app.json), Koyeb (Docker), Render, GitHub Actions, Termux — voir `GUIDE_DEPLOY.md`
+
+### Installation des commandes optionnelles
+
+```bash
+npm install ytdl-core yt-search google-tts-api   # .play, .tts
+npm run storm:install                              # StormBot (Puppeteer + Chrome)
+```
