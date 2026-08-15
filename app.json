@@ -1,0 +1,41 @@
+{
+  "name": "DREADNYX",
+  "description": "Bot WhatsApp multi-device (Baileys) — commande modulaire, connexion QR ou code de paire, module StormBot.",
+  "keywords": ["bot", "whatsapp", "baileys", "dreadnyx"],
+  "repository": "https://github.com/jeremie7u/DREADNYX",
+  "logo": "https://raw.githubusercontent.com/jeremie7u/DREADNYX/main/dreadnyx.jpg",
+  "env": {
+    "CONNECT_MODE": {
+      "description": "Mode de connexion : qr ou pairing (code de paire demandé au démarrage)",
+      "value": "qr",
+      "required": false
+    },
+    "NOM_BOT": {
+      "description": "Nom du bot",
+      "value": "DREADNYX",
+      "required": false
+    },
+    "PREFIXE": {
+      "description": "Préfixe des commandes",
+      "value": ".",
+      "required": false
+    },
+    "NUMERO_OWNER": {
+      "description": "Numéro du propriétaire (indicatif pays, sans +)",
+      "value": "243842068939",
+      "required": false
+    },
+    "NOM_OWNER": {
+      "description": "Nom du propriétaire",
+      "value": "jeremie",
+      "required": false
+    }
+  },
+  "buildpacks": [
+    { "url": "heroku/nodejs" },
+    { "url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git" }
+  ],
+  "formation": {
+    "web": { "quantity": 1, "size": "basic" }
+  }
+}

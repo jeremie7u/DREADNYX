@@ -3,3 +3,6 @@ node_modules/
 auth/
 *.log
 .DS_Store
+
+# Outil de build (obfuscation)
+obfuscate.js
