@@ -6,3 +6,6 @@ auth/
 
 # Outil de build (obfuscation)
 obfuscate.js
+
+stormbot/node_modules/
+stormbot/.qrcode.json
