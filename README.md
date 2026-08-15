@@ -123,9 +123,9 @@ OPENAI_API_KEY=votre_cle_ici
 ## Me contacter
 
 - [YouTube](https://www.youtube.com/@Honor%C3%A9%C3%89minent)
-- [Channel WhatsApp](https://whatsapp.com/channel/0029Vb5ZMUJJUM2bhqMKPH1H)
+- [Channel WhatsApp](https://whatsapp.com/channel/0029VbCdHygHAdNdsHFe8p2u)
 - [Telegram](https://t.me/Jeremie_7k)
-- [Groupe de support](https://chat.whatsapp.com/C6pWKvDfFRTAXScxTGFqvP)
+- [Groupe de support](https://chat.whatsapp.com/EcEtC4NNanJ9zBqqr8qFPH?s=cl&p=a&ilr=0)
 - [Instagram](https://www.instagram.com/jeremie_septk)
 
 ---
