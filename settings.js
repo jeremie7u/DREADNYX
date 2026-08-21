@@ -3,11 +3,10 @@
 BUY NO ENC +243987391338
 */
 
-require("./all/module.js")
-const { color } = require('./all/function')
 const { version } = require("./package.json")
 //========== Setting Owner ==========//
 global.owner = "243987391338"
+global.sudo = ["243987391338"]
 global.owner2 = "jeremie7u"
 global.namaowner = "jeremie"
 global.botname = "dreadnyx"
