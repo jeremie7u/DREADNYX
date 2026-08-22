@@ -1,0 +1,3 @@
+{
+  "demoteall":"groupe", "promotehere":"groupe", "demotehere":"groupe", "setrules":"groupe", "rules":"groupe", "welcome":"automatisation", "goodbye":"automatisation", "slowmode":"groupe", "lockmedia":"groupe", "slowannounce":"automatisation", "snapshot":"groupe", "auditadmins":"groupe", "membercount":"groupe", "randommember":"groupe", "rotateadmin":"groupe", "silenttag":"groupe", "mentionadmins":"groupe", "grouphealth":"groupe", "emergencylock":"groupe", "emergencyunlock":"groupe", "membercard":"groupe"
+}
