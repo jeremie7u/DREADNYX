@@ -1,6 +1,7 @@
 node_modules/
 .env
 auth/
+data/
 *.log
 .DS_Store
 
@@ -9,3 +10,7 @@ obfuscate.js
 
 stormbot/node_modules/
 stormbot/.qrcode.json
+# Sessions et secrets locaux
+telegram-session/
+.env.*
+!.env.example

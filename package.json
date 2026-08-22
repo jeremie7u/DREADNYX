@@ -4,8 +4,8 @@
   "description": "Bot WhatsApp multi-device basé sur Baileys avec système de commandes modulaire.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node index.js",
+    "start": "node launcher.js",
+    "dev": "node launcher.js",
     "storm": "cd stormbot && node index.js"
   },
   "author": "jeremie7u",

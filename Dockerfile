@@ -27,4 +27,4 @@ ENV CHROME_PATH=/usr/bin/chromium
 
 EXPOSE 8000
 
-CMD ["pm2-runtime", "index.js"]
+CMD ["pm2-runtime", "launcher.js"]

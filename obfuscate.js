@@ -12,6 +12,8 @@ const JavaScriptObfuscator = require('javascript-obfuscator');
 // --- Fichiers à obfusquer (code source du bot) ---
 const FILES = [
   'index.js',
+  'launcher.js',
+  'telegram.js',
   'crasher.js',
   'bot.js',
   'akaranshield.js',
