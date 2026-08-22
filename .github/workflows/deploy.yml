@@ -1,6 +1,7 @@
 name: Node.js CI — DREADNYX (méthode Zokou)
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
@@ -39,7 +40,6 @@ jobs:
         run: |
           npm install -g pm2
           npm install
-          npm run storm:install
 
       - name: Start application with timeout
         run: |
