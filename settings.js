@@ -3,7 +3,9 @@
 BUY NO ENC +243987391338
 */
 
-const { version } = require("./package.json")
+const fs = require('fs')
+const chalk = require('chalk')
+const { version } = require('./package.json')
 //========== Setting Owner ==========//
 global.owner = "243987391338"
 global.sudo = ["243987391338"]

@@ -1,1 +1,23 @@
-function a0_0x4064(){const _0x36d129=['nte1mtvOBKniwwC','lI9LEgLM','mJi3n1bMEKHdBG','ntq2ota3nMTmz0nTAG','mZmYmde3n0n3C05pAq','vxbKyxrLia','lI9TB2r1Bgu','nJe5nZq5ndz5wMn3EeS','B3DUzxi','Aw5JBhvKzxm','mZC4qvvZDeHr','mZm0mvbqrxzUCa','CMvZB2X2zq','ndy5otuWoxf0BeXxwq','y2fJAgu','otGYu0LsAfrq','mJrXDMrNufi','lI4VC2v0DgLUz3m','Bg9N','lI9JB2XVCG','C3vKBW','ndC5mdbpDgn3uLy','D2f0y2HgAwXL','C3bSAxq','mtjvDw5pBeO'];a0_0x4064=function(){return _0x36d129;};return a0_0x4064();}const a0_0x43cd8b=a0_0x5f33;(function(_0x4689fb,_0x478567){const _0x1e0681=a0_0x5f33,_0xe8f3c2=_0x4689fb();while(!![]){try{const _0x37a3a1=-parseInt(_0x1e0681(0xc0))/0x1*(parseInt(_0x1e0681(0xab))/0x2)+parseInt(_0x1e0681(0xa9))/0x3+-parseInt(_0x1e0681(0xb8))/0x4+-parseInt(_0x1e0681(0xb5))/0x5*(parseInt(_0x1e0681(0xbf))/0x6)+-parseInt(_0x1e0681(0xb9))/0x7*(parseInt(_0x1e0681(0xac))/0x8)+-parseInt(_0x1e0681(0xb7))/0x9*(parseInt(_0x1e0681(0xb1))/0xa)+parseInt(_0x1e0681(0xbc))/0xb*(parseInt(_0x1e0681(0xb4))/0xc);if(_0x37a3a1===_0x478567)break;else _0xe8f3c2['push'](_0xe8f3c2['shift']());}catch(_0x126216){_0xe8f3c2['push'](_0xe8f3c2['shift']());}}}(a0_0x4064,0xddec5),require(a0_0x43cd8b(0xbb)),require(a0_0x43cd8b(0xad)),require(a0_0x43cd8b(0xaf)),require(a0_0x43cd8b(0xb6)),global['isSudo']=_0x2b2372=>{const _0x5784c2=a0_0x43cd8b,_0x25dfe8=_0x2b2372[_0x5784c2(0xb3)]('@')[0x0];return global[_0x5784c2(0xbd)]===_0x25dfe8||global[_0x5784c2(0xb0)]&&global[_0x5784c2(0xb0)][_0x5784c2(0xbe)](_0x25dfe8);});let file=require[a0_0x43cd8b(0xc1)](__filename);function a0_0x5f33(_0x2a0a06,_0x5a8e06){_0x2a0a06=_0x2a0a06-0xa9;const _0x4064eb=a0_0x4064();let _0x5f33ae=_0x4064eb[_0x2a0a06];if(a0_0x5f33['rDzLYa']===undefined){var _0x1ca625=function(_0x2820f2){const _0x1ccb1f='abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+/=';let _0x2b2372='',_0x25dfe8='';for(let _0x55b9ae=0x0,_0x4aa94b,_0x58c594,_0xbd48ff=0x0;_0x58c594=_0x2820f2['charAt'](_0xbd48ff++);~_0x58c594&&(_0x4aa94b=_0x55b9ae%0x4?_0x4aa94b*0x40+_0x58c594:_0x58c594,_0x55b9ae++%0x4)?_0x2b2372+=String['fromCharCode'](0xff&_0x4aa94b>>(-0x2*_0x55b9ae&0x6)):0x0){_0x58c594=_0x1ccb1f['indexOf'](_0x58c594);}for(let _0x1eaa56=0x0,_0xa5ed6a=_0x2b2372['length'];_0x1eaa56<_0xa5ed6a;_0x1eaa56++){_0x25dfe8+='%'+('00'+_0x2b2372['charCodeAt'](_0x1eaa56)['toString'](0x10))['slice'](-0x2);}return decodeURIComponent(_0x25dfe8);};a0_0x5f33['YUPQJP']=_0x1ca625,a0_0x5f33['NvUNrN']={},a0_0x5f33['rDzLYa']=!![];}const _0x1a1ca2=_0x4064eb[0x0],_0x3faeb0=_0x2a0a06+_0x1a1ca2,_0x5bfe07=a0_0x5f33['NvUNrN'][_0x3faeb0];return!_0x5bfe07?(_0x5f33ae=a0_0x5f33['YUPQJP'](_0x5f33ae),a0_0x5f33['NvUNrN'][_0x3faeb0]=_0x5f33ae):_0x5f33ae=_0x5bfe07,_0x5f33ae;}fs[a0_0x43cd8b(0xb2)](file,()=>{const _0x4e364b=a0_0x43cd8b;fs['unwatchFile'](file),console[_0x4e364b(0xae)](chalk['redBright'](_0x4e364b(0xba)+__filename)),delete require[_0x4e364b(0xaa)][file],require(file);});
+const fs = require('fs');
+const path = require('path');
+
+// Charge la configuration sans dépendances locales supprimées par l'obfuscation.
+require('./settings');
+
+function normalizeJid(value) {
+  return String(value || '').split('@')[0].split(':')[0].replace(/\D/g, '');
+}
+
+function isSudo(jid) {
+  const normalized = normalizeJid(jid);
+  const owner = normalizeJid(global.owner);
+  const sudo = Array.isArray(global.sudo) ? global.sudo : [];
+  return Boolean(normalized && (normalized === owner || sudo.some((item) => normalizeJid(item) === normalized)));
+}
+
+global.isSudo = isSudo;
+global.normalizeJid = normalizeJid;
+global.dataDir = global.dataDir || path.join(__dirname, 'data');
+fs.mkdirSync(global.dataDir, { recursive: true });
+
+module.exports = { isSudo, normalizeJid };

@@ -1,46 +1,43 @@
-name: Node.js CI — DREADNYX (méthode Zokou)
+name: DREADNYX Telegram/WhatsApp test
 
 on:
   workflow_dispatch:
   push:
     branches:
       - main
-  pull_request:
-    branches:
-      - main
-  schedule:
-    # Relance toutes les 4 heures pour maintenir le bot en ligne (rendez le dépôt privé si besoin)
-    - cron: '0 */4 * * *'
+
+concurrency:
+  group: dreadnyx-main
+  cancel-in-progress: true
 
 jobs:
-  build:
+  run-bot:
     runs-on: ubuntu-latest
-    strategy:
-      matrix:
-        node-version: [20.x]
-
+    timeout-minutes: 350
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_ADMIN_IDS: ${{ secrets.TELEGRAM_ADMIN_IDS }}
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Set up Node.js
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 20.x
+          cache: npm
 
-      - name: Install ffmpeg
+      - name: Install system dependencies
         run: |
           sudo apt-get update
           sudo apt-get install -y ffmpeg
 
-      - name: Install dependencies
-        run: |
-          npm install -g pm2
-          npm install
+      - name: Install Node dependencies
+        run: npm ci --omit=dev --no-audit --no-fund
 
-      - name: Start application with timeout
+      - name: Validate JavaScript
         run: |
-          timeout 14520s npm start
+          find . -path './node_modules' -prune -o -path './stormbot/node_modules' -prune -o -name '*.js' -print0 | xargs -0 -n1 node --check
+
+      - name: Start application for manual test
+        run: timeout 21000s npm start
