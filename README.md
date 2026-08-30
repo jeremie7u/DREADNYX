@@ -88,6 +88,17 @@ module.exports = {
 };
 ```
 
+## Commandes ajoutées récemment
+
+Les commandes suivantes complètent la gestion avancée des groupes et les automatisations :
+
+| Gestion de groupe | Automatisation |
+|---|---|
+| `groupid`, `groupstats`, `groupadmins`, `groupmembers`, `groupmode` | `remind`, `reminders`, `cancelreminder`, `countdown`, `scheduleopen`, `scheduleclose` |
+| `groupaudit`, `tagmembers`, `groupdesc`, `grouptitle`, `memberroles` | `schedulestatus`, `canceljob`, `timezone`, `schedulemsg` |
+
+Chaque commande reçoit un délai de trois secondes avant son exécution. Une répétition identique par le même utilisateur et dans la même conversation pendant ce délai est ignorée afin de limiter le spam. Les tâches temporisées sont conservées en mémoire ; elles doivent donc être recréées après un redémarrage du processus.
+
 ## Configuration
 
 | Fichier | Rôle |
@@ -125,6 +136,7 @@ OPENAI_API_KEY=votre_cle_ici
 - [YouTube](https://www.youtube.com/@Honor%C3%A9%C3%89minent)
 - [Channel WhatsApp](https://whatsapp.com/channel/0029VbCdHygHAdNdsHFe8p2u)
 - [Telegram](https://t.me/Jeremie_7k)
+- [Groupe Telegram DREADNYX](https://t.me/Dreadnyxtest)
 - [Groupe de support](https://chat.whatsapp.com/EcEtC4NNanJ9zBqqr8qFPH?s=cl&p=a&ilr=0)
 - [Instagram](https://www.instagram.com/jeremie_septk)
 

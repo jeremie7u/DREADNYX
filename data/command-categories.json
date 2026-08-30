@@ -1,0 +1,22 @@
+{
+  "groupid": "groupe",
+  "groupstats": "groupe",
+  "groupadmins": "groupe",
+  "groupmembers": "groupe",
+  "groupmode": "groupe",
+  "groupaudit": "groupe",
+  "tagmembers": "groupe",
+  "groupdesc": "groupe",
+  "grouptitle": "groupe",
+  "memberroles": "groupe",
+  "remind": "automatisation",
+  "reminders": "automatisation",
+  "cancelreminder": "automatisation",
+  "countdown": "automatisation",
+  "scheduleopen": "automatisation",
+  "scheduleclose": "automatisation",
+  "schedulestatus": "automatisation",
+  "canceljob": "automatisation",
+  "timezone": "automatisation",
+  "schedulemsg": "automatisation"
+}

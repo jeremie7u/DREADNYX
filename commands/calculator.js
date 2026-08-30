@@ -22,3 +22,6 @@ module.exports = {
     }
   }
 };
+
+// Délai humain et anti-spam appliqué au niveau central.
+module.exports = require('../lib/command-delay').wrapCommand(module.exports);

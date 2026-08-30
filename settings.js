@@ -21,7 +21,7 @@ global.idsaluran = false
 global.linkgc = 'https://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b'
 global.linksaluran = "https://whatsapp.com/channel/0029VbAwH49JZg3ziL30kh3b"
 global.linkyt = 'https://youtube.com/@honoreeminent?si=S8gCWZR9jxEhKCEd'
-global.linktele = 'https://t.me/Jeremie_7k'
+global.linktele = 'https://t.me/Dreadnyxtest'
 global.packname = "Jeremie V70"
 global.author = "Jeremie"
 

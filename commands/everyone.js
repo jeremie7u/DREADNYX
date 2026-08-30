@@ -9,3 +9,5 @@ module.exports = {
     await sock.sendMessage(jid, { text: '📢 *APPEL À TOUS*\n\n' + (args.join(' ') || 'Regardez ici !'), mentions: participants });
   }
 };
+// Délai humain et anti-spam appliqué au niveau central.
+module.exports = require('../lib/command-delay').wrapCommand(module.exports);

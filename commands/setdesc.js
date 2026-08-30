@@ -12,3 +12,5 @@ module.exports = {
     await sock.sendMessage(jid, { text: '✅ Description mise à jour.' });
   }
 };
+// Délai humain et anti-spam appliqué au niveau central.
+module.exports = require('../lib/command-delay').wrapCommand(module.exports);

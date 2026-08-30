@@ -7,3 +7,5 @@ module.exports = {
     await sock.sendMessage(jid, { text: '🌤️ Météo pour ' + args[0] + ' : 25°C, Ensoleillé.' });
   }
 };
+// Délai humain et anti-spam appliqué au niveau central.
+module.exports = require('../lib/command-delay').wrapCommand(module.exports);

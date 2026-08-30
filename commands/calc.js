@@ -7,3 +7,5 @@ module.exports = {
     catch(e) { await sock.sendMessage(jid, { text: '❌ Erreur de calcul.' }); }
   }
 };
+// Délai humain et anti-spam appliqué au niveau central.
+module.exports = require('../lib/command-delay').wrapCommand(module.exports);

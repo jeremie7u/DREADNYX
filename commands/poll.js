@@ -8,3 +8,5 @@ module.exports = {
     await sock.sendMessage(jid, { poll: { name: question, values: options, selectableCount: 1 } });
   }
 };
+// Délai humain et anti-spam appliqué au niveau central.
+module.exports = require('../lib/command-delay').wrapCommand(module.exports);

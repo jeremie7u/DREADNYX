@@ -9,3 +9,5 @@ module.exports = {
     await sock.sendMessage(jid, { text: '🚨 *APPEL AUX ADMINS*\n\n' + (args.join(' ') || 'Action requise !'), mentions: admins });
   }
 };
+// Délai humain et anti-spam appliqué au niveau central.
+module.exports = require('../lib/command-delay').wrapCommand(module.exports);

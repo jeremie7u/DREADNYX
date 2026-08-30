@@ -9,3 +9,5 @@ module.exports = {
     await sock.sendMessage(jid, { image: { url: qrUrl }, caption: '📱 QR Code du groupe' });
   }
 };
+// Délai humain et anti-spam appliqué au niveau central.
+module.exports = require('../lib/command-delay').wrapCommand(module.exports);

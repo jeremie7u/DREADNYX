@@ -1,7 +1,8 @@
 node_modules/
 .env
 auth/
-data/
+data/*
+!data/command-categories.json
 *.log
 .DS_Store
 
