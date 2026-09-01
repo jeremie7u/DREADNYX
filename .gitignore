@@ -1,5 +1,17 @@
 node_modules/
 .env
 auth/
+data/*
+!data/command-categories.json
 *.log
 .DS_Store
+
+# Outil de build (obfuscation)
+obfuscate.js
+
+stormbot/node_modules/
+stormbot/.qrcode.json
+# Sessions et secrets locaux
+telegram-session/
+.env.*
+!.env.example

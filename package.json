@@ -4,8 +4,9 @@
   "description": "Bot WhatsApp multi-device basé sur Baileys avec système de commandes modulaire.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
-    "dev": "node index.js"
+    "start": "node launcher.js",
+    "dev": "node launcher.js",
+    "storm": "cd stormbot && node index.js"
   },
   "author": "jeremie7u",
   "license": "MIT",
@@ -16,6 +17,9 @@
     "@hapi/boom": "^10.0.0",
     "@whiskeysockets/baileys": "^6.6.0",
     "dotenv": "^16.0.0",
-    "pino": "^8.0.0"
+    "g-i-s": "^2.1.7",
+    "javascript-obfuscator": "^5.5.0",
+    "pino": "^8.0.0",
+    "translate-google": "^1.5.0"
   }
 }
