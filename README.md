@@ -99,6 +99,12 @@ Les commandes suivantes complètent la gestion avancée des groupes et les autom
 
 Chaque commande reçoit un délai de trois secondes avant son exécution. Une répétition identique par le même utilisateur et dans la même conversation pendant ce délai est ignorée afin de limiter le spam. Les tâches temporisées sont conservées en mémoire ; elles doivent donc être recréées après un redémarrage du processus.
 
+## Protection d’accès dans les groupes
+
+Dans un groupe, l’exécution des commandes est réservée au propriétaire principal et aux utilisateurs secondaires enregistrés dans la liste SUDO. Si un autre membre tente d’utiliser une commande, le bot attend le délai anti-spam prévu puis envoie un avertissement au lieu d’ouvrir le menu ou d’exécuter la commande. Cette règle est appliquée au niveau central afin de couvrir les commandes existantes et futures.
+
+Le contrôle ne s’applique pas aux conversations privées : les commandes de confidentialité restent disponibles en privé pour permettre à chaque utilisateur de donner ou retirer son consentement.
+
 ## Mode privé contextuel
 
 Le bot ne lit pas les autres conversations présentes sur le téléphone de l’utilisateur. Il ne peut traiter que les messages privés envoyés directement à son propre compte WhatsApp. Par défaut, ce mode est désactivé et aucune conversation privée n’est mémorisée.
