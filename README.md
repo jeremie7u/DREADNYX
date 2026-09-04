@@ -99,6 +99,20 @@ Les commandes suivantes complètent la gestion avancée des groupes et les autom
 
 Chaque commande reçoit un délai de trois secondes avant son exécution. Une répétition identique par le même utilisateur et dans la même conversation pendant ce délai est ignorée afin de limiter le spam. Les tâches temporisées sont conservées en mémoire ; elles doivent donc être recréées après un redémarrage du processus.
 
+## Mode privé contextuel
+
+Le bot ne lit pas les autres conversations présentes sur le téléphone de l’utilisateur. Il ne peut traiter que les messages privés envoyés directement à son propre compte WhatsApp. Par défaut, ce mode est désactivé et aucune conversation privée n’est mémorisée.
+
+L’utilisateur doit activer explicitement le mode dans sa conversation privée avec le bot :
+
+```text
+.privatemode on
+```
+
+Après activation, DREADNYX conserve au maximum les 20 derniers messages échangés dans cette conversation afin de produire une réponse contextuelle. L’utilisateur peut consulter l’état avec `.privatememory`, désactiver le mode et effacer le contexte avec `.privatemode off`, ou supprimer immédiatement toutes ses données avec `.forgetme`. Les fichiers de mémoire sont créés dans `data/private-memory.json`, avec des permissions locales restrictives, et le dossier `data/` reste ignoré par Git.
+
+La génération IA est désactivée par défaut. Pour l’activer sur un VPS, l’administrateur doit configurer `PRIVATE_AI_ENABLED=true`, `PRIVATE_AI_MODEL` et `OPENAI_API_KEY` dans le fichier `.env`. Les messages privés ne sont alors transmis qu’au fournisseur configuré pour générer la réponse, conformément à sa politique de confidentialité. N’activez cette option qu’après avoir informé les utilisateurs concernés.
+
 ## Configuration
 
 | Fichier | Rôle |

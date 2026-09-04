@@ -18,5 +18,8 @@
   "schedulestatus": "automatisation",
   "canceljob": "automatisation",
   "timezone": "automatisation",
-  "schedulemsg": "automatisation"
+  "schedulemsg": "automatisation",
+  "privatemode": "proprietaire",
+  "privatememory": "proprietaire",
+  "forgetme": "proprietaire"
 }
