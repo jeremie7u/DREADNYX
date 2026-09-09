@@ -19,211 +19,290 @@
       <h1 id="dreadnyx">DREADNYX</h1>
 <div align="center">
 
-![banner](dreadnyx.jpg)
+![DREADNYX](dreadnyx.jpg)
 
-**Bot WhatsApp multi-device** construit avec [Baileys](https://github.com/WhiskeySockets/Baileys) et [Node.js](https://nodejs.org/).
+**Bot WhatsApp multi-appareils pour la gestion de groupes, l’automatisation et l’administration privée.**
 
 [![Stars](https://img.shields.io/github/stars/jeremie7u/DREADNYX?style=flat-square&color=yellow)](https://github.com/jeremie7u/DREADNYX/stargazers)
 [![Forks](https://img.shields.io/github/forks/jeremie7u/DREADNYX?style=flat-square&color=green)](https://github.com/jeremie7u/DREADNYX/network/members)
-[![Taille](https://img.shields.io/github/repo-size/jeremie7u/DREADNYX?style=flat-square&color=blue)](https://github.com/jeremie7u/DREADNYX)
 [![Version](https://img.shields.io/github/package-json/v/jeremie7u/DREADNYX?style=flat-square&color=red)](https://github.com/jeremie7u/DREADNYX/blob/main/package.json)
 [![Licence](https://img.shields.io/github/license/jeremie7u/DREADNYX?style=flat-square)](https://github.com/jeremie7u/DREADNYX/blob/main/LICENSE)
 
-Créé par [jeremie7u](https://github.com/jeremie7u) · N'oubliez pas de laisser une étoile ! ⭐
+Créé par [Jeremie 7K](https://github.com/jeremie7u)
 
 </div>
 
 <h2 id="table-des-matieres">Table des matières</h2>
 <ul>
+<li><a href="#présentation">Présentation</a></li>
 <li><a href="#fonctionnalités">Fonctionnalités</a></li>
 <li><a href="#installation">Installation</a></li>
+<li><a href="#connexion-whatsapp">Connexion WhatsApp</a></li>
 <li><a href="#utilisation">Utilisation</a></li>
-<li><a href="#système-de-commandes">Système de commandes</a></li>
+<li><a href="#commandes">Commandes</a></li>
+<li><a href="#administration-et-sudo">Administration et SUDO</a></li>
+<li><a href="#mode-privé-contextuel">Mode privé contextuel</a></li>
+<li><a href="#déploiement-permanent">Déploiement permanent</a></li>
 <li><a href="#configuration">Configuration</a></li>
-<li><a href="#problèmes-connus-et-solutions">Problèmes connus et solutions</a></li>
 <li><a href="#sécurité">Sécurité</a></li>
 <li><a href="#me-contacter">Me contacter</a></li>
 </ul>
+<h2 id="presentation">Présentation</h2>
+<p>DREADNYX est un bot WhatsApp multi-appareils construit avec <a href="https://github.com/WhiskeySockets/Baileys">Baileys</a> et <a href="https://nodejs.org/">Node.js</a>. Son architecture modulaire permet de gérer des groupes, d’exécuter des automatisations, de contrôler les accès et de connecter une session WhatsApp depuis Telegram.</p>
+<p>Les commandes utilisent le préfixe <code>.</code> et sont organisées par catégories dans le menu du bot.</p>
 <h2 id="fonctionnalites">Fonctionnalités</h2>
+<p>DREADNYX propose notamment :</p>
 <ul>
-<li>Connexion WhatsApp via <strong>QR code</strong> (Baileys multi-device)</li>
-<li>Système de <strong>commandes modulaires</strong> : chaque commande est un fichier <code>.js</code> dans le dossier <code>commands/</code></li>
-<li><strong>Reconnexion automatique</strong> en cas de déconnexion</li>
-<li>Chargement dynamique des commandes avec gestion d'erreurs (une commande cassée ne fait plus tomber tout le bot)</li>
-<li>Support multi-langages et scripts de crash-testing (voir <code>crasher.js</code>)</li>
-<li>Exemples de scripts Python et Node pour l'automatisation</li>
+<li>Une connexion WhatsApp par QR code ou code d’association.</li>
+<li>Une reconnexion automatique et une session multi-appareils persistante.</li>
+<li>Un système de commandes modulaires chargé depuis le dossier <code>commands/</code>.</li>
+<li>Des outils de modération et d’administration avancés pour les groupes.</li>
+<li>Un système multi-utilisateur propriétaire/SUDO.</li>
+<li>Des automatisations de rappels, de compte à rebours et d’ouverture ou fermeture programmée des groupes.</li>
+<li>Un bridge Telegram réservé à la connexion et à la gestion des sessions WhatsApp.</li>
+<li>Un menu avec identité visuelle, lien Telegram et contenu multimédia.</li>
+<li>Un mode privé contextuel activable avec le consentement explicite de l’utilisateur.</li>
+<li>Une protection des commandes de groupe réservée au propriétaire et aux utilisateurs secondaires autorisés.</li>
 </ul>
 <h2 id="installation">Installation</h2>
-<h3 id="pre-requis">Pré-requis</h3>
+<h3 id="prerequis">Prérequis</h3>
 <table>
 <thead>
 <tr>
 <th>Dépendance</th>
-<th>Pourquoi</th>
+<th>Utilité</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><a href="https://nodejs.org/">Node.js</a> ≥ 16</td>
-<td>Runtime JavaScript</td>
+<td><a href="https://nodejs.org/">Node.js</a> 16 ou supérieur</td>
+<td>Exécution du bot</td>
 </tr>
 <tr>
 <td><a href="https://git-scm.com/downloads">Git</a></td>
-<td>Cloner le dépôt</td>
+<td>Téléchargement du projet</td>
 </tr>
 <tr>
 <td><a href="https://ffmpeg.org/download.html">FFmpeg</a></td>
-<td>Traitement audio/vidéo</td>
+<td>Traitement des contenus audio et vidéo</td>
 </tr>
 <tr>
-<td>Un éditeur de texte</td>
-<td>Modifier la configuration</td>
+<td>Un compte Telegram</td>
+<td>Utilisation du bridge de connexion, si activé</td>
 </tr>
 </tbody>
 </table>
-<h3 id="etapes">Étapes</h3>
-<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-bash"># 1. Cloner le dépôt
-git clone https://github.com/jeremie7u/DREADNYX.git
+<h3 id="installation-locale-ou-sur-vps">Installation locale ou sur VPS</h3>
+<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-bash">git clone https://github.com/jeremie7u/DREADNYX.git
 cd DREADNYX
-
-# 2. Installer les dépendances
-npm install
-
-# 3. Démarrer le bot
+npm ci --omit=dev
+cp .env.example .env
 npm start
 </code></pre>
-<p>Au premier démarrage, un <strong>QR code</strong> s'affiche dans le terminal : scannez-le avec WhatsApp (Paramètres → Appareils liés → Lier un appareil).</p>
-<h3 id="activation-247-termux">Activation 24/7 (Termux)</h3>
-<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-bash">npm i -g pm2
-termux-wake-lock
-pm2 start index.js --name=dreadnyx
-pm2 save
-pm2 startup
+<p>Le fichier <code>.env</code> doit être complété localement et ne doit jamais être publié dans le dépôt.</p>
+<h2 id="connexion-whatsapp">Connexion WhatsApp</h2>
+<p>Au premier démarrage, DREADNYX peut utiliser le QR code affiché dans le terminal. Lorsque le bridge Telegram est activé, l’association peut également être demandée depuis le bot Telegram avec la commande :</p>
+<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-text">/connect
 </code></pre>
+<p>Le numéro WhatsApp doit être saisi au format international, sans <code>+</code>, espace ni tiret. Le code d’association reçu doit rester privé et ne doit jamais être transmis à une autre personne.</p>
 <h2 id="utilisation">Utilisation</h2>
-<p>Le bot écoute les messages commençant par <code>.</code>. Ajoutez vos commandes dans le dossier <code>commands/</code> :</p>
-<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-js">// commands/ping.js — exemple
-module.exports = {
-  name: 'ping',
-  description: 'Affiche la latence du bot.',
-  execute: async (sock, msg, args) =&gt; {
-    await sock.sendMessage(msg.key.remoteJid, { text: 'Pong !' });
-  }
-};
+<p>Les commandes sont exécutées avec le préfixe <code>.</code>. Quelques exemples :</p>
+<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-text">.menu
+.groupid
+.groupstats
+.sudolist
+.privatemode
 </code></pre>
-<h2 id="commandes-ajoutees-recemment">Commandes ajoutées récemment</h2>
-<p>Les commandes suivantes complètent la gestion avancée des groupes et les automatisations :</p>
+<p>Le menu présente les fonctionnalités disponibles et leurs catégories. Les commandes qui modifient les réglages d’un groupe nécessitent que le bot dispose des droits d’administration nécessaires.</p>
+<h2 id="commandes">Commandes</h2>
+<h3 id="gestion-de-groupe">Gestion de groupe</h3>
 <table>
 <thead>
 <tr>
-<th>Gestion de groupe</th>
-<th>Automatisation</th>
+<th>Commandes</th>
+<th>Utilité</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>groupid</code>, <code>groupstats</code>, <code>groupadmins</code>, <code>groupmembers</code>, <code>groupmode</code></td>
-<td><code>remind</code>, <code>reminders</code>, <code>cancelreminder</code>, <code>countdown</code>, <code>scheduleopen</code>, <code>scheduleclose</code></td>
+<td><code>.groupid</code></td>
+<td>Affiche l’identifiant du groupe</td>
 </tr>
 <tr>
-<td><code>groupaudit</code>, <code>tagmembers</code>, <code>groupdesc</code>, <code>grouptitle</code>, <code>memberroles</code></td>
-<td><code>schedulestatus</code>, <code>canceljob</code>, <code>timezone</code>, <code>schedulemsg</code></td>
+<td><code>.groupstats</code></td>
+<td>Affiche les statistiques du groupe</td>
+</tr>
+<tr>
+<td><code>.groupadmins</code></td>
+<td>Liste les administrateurs</td>
+</tr>
+<tr>
+<td><code>.groupmembers</code></td>
+<td>Liste les membres</td>
+</tr>
+<tr>
+<td><code>.groupmode</code></td>
+<td>Affiche les réglages du groupe</td>
+</tr>
+<tr>
+<td><code>.groupaudit</code></td>
+<td>Effectue un audit de sécurité</td>
+</tr>
+<tr>
+<td><code>.tagmembers</code></td>
+<td>Mentionne les membres ciblés</td>
+</tr>
+<tr>
+<td><code>.groupdesc</code></td>
+<td>Affiche la description du groupe</td>
+</tr>
+<tr>
+<td><code>.grouptitle</code></td>
+<td>Affiche le nom du groupe</td>
+</tr>
+<tr>
+<td><code>.memberroles</code></td>
+<td>Affiche le rôle des membres ciblés</td>
 </tr>
 </tbody>
 </table>
-<p>Chaque commande reçoit un délai de trois secondes avant son exécution. Une répétition identique par le même utilisateur et dans la même conversation pendant ce délai est ignorée afin de limiter le spam. Les tâches temporisées sont conservées en mémoire ; elles doivent donc être recréées après un redémarrage du processus.</p>
-<h2 id="protection-dacces-dans-les-groupes">Protection d’accès dans les groupes</h2>
-<p>Dans un groupe, l’exécution des commandes est réservée au propriétaire principal et aux utilisateurs secondaires enregistrés dans la liste SUDO. Si un autre membre tente d’utiliser une commande, le bot attend le délai anti-spam prévu puis envoie un avertissement au lieu d’ouvrir le menu ou d’exécuter la commande. Cette règle est appliquée au niveau central afin de couvrir les commandes existantes et futures.</p>
-<p>Le contrôle ne s’applique pas aux conversations privées : les commandes de confidentialité restent disponibles en privé pour permettre à chaque utilisateur de donner ou retirer son consentement.</p>
+<h3 id="automatisation">Automatisation</h3>
+<table>
+<thead>
+<tr>
+<th>Commandes</th>
+<th>Utilité</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>.remind</code></td>
+<td>Programme un rappel</td>
+</tr>
+<tr>
+<td><code>.reminders</code></td>
+<td>Affiche les rappels actifs</td>
+</tr>
+<tr>
+<td><code>.cancelreminder</code></td>
+<td>Annule un rappel</td>
+</tr>
+<tr>
+<td><code>.countdown</code></td>
+<td>Lance un compte à rebours</td>
+</tr>
+<tr>
+<td><code>.scheduleopen</code></td>
+<td>Programme l’ouverture du groupe</td>
+</tr>
+<tr>
+<td><code>.scheduleclose</code></td>
+<td>Programme la fermeture du groupe</td>
+</tr>
+<tr>
+<td><code>.schedulestatus</code></td>
+<td>Affiche les tâches programmées</td>
+</tr>
+<tr>
+<td><code>.canceljob</code></td>
+<td>Annule une tâche</td>
+</tr>
+<tr>
+<td><code>.timezone</code></td>
+<td>Définit ou affiche le fuseau horaire</td>
+</tr>
+<tr>
+<td><code>.schedulemsg</code></td>
+<td>Programme un message</td>
+</tr>
+</tbody>
+</table>
+<p>Chaque commande utilise un délai de trois secondes afin de limiter les répétitions rapprochées et de préserver une utilisation ordonnée du bot.</p>
+<h2 id="administration-et-sudo">Administration et SUDO</h2>
+<p>Le propriétaire principal peut gérer les utilisateurs secondaires autorisés :</p>
+<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-text">.addsudo numéro
+.delsudo numéro
+.sudolist
+</code></pre>
+<p>Dans un groupe, les commandes sont réservées au propriétaire principal et aux utilisateurs enregistrés dans la liste SUDO. Les autres membres reçoivent un message d’information au lieu d’ouvrir le menu ou d’exécuter une commande.</p>
 <h2 id="mode-prive-contextuel">Mode privé contextuel</h2>
-<p>Le bot ne lit pas les autres conversations présentes sur le téléphone de l’utilisateur. Il ne peut traiter que les messages privés envoyés directement à son propre compte WhatsApp. Par défaut, ce mode est désactivé et aucune conversation privée n’est mémorisée.</p>
-<p>L’utilisateur doit activer explicitement le mode dans sa conversation privée avec le bot :</p>
+<p>Le mode privé est désactivé par défaut. Il ne peut traiter que les messages envoyés directement au compte WhatsApp du bot ; il ne donne pas accès aux autres conversations présentes sur le téléphone de l’utilisateur.</p>
+<p>L’utilisateur peut activer le mode dans sa conversation privée avec le bot :</p>
 <pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-text">.privatemode on
 </code></pre>
-<p>Après activation, DREADNYX conserve au maximum les 20 derniers messages échangés dans cette conversation afin de produire une réponse contextuelle. L’utilisateur peut consulter l’état avec <code>.privatememory</code>, désactiver le mode et effacer le contexte avec <code>.privatemode off</code>, ou supprimer immédiatement toutes ses données avec <code>.forgetme</code>. Les fichiers de mémoire sont créés dans <code>data/private-memory.json</code>, avec des permissions locales restrictives, et le dossier <code>data/</code> reste ignoré par Git.</p>
-<p>La génération IA est désactivée par défaut. Pour l’activer sur un VPS, l’administrateur doit configurer <code>PRIVATE_AI_ENABLED=true</code>, <code>PRIVATE_AI_MODEL</code> et <code>OPENAI_API_KEY</code> dans le fichier <code>.env</code>. Les messages privés ne sont alors transmis qu’au fournisseur configuré pour générer la réponse, conformément à sa politique de confidentialité. N’activez cette option qu’après avoir informé les utilisateurs concernés.</p>
+<p>Après activation, DREADNYX utilise un contexte limité aux 20 derniers messages de cette conversation pour améliorer la cohérence des réponses. Les commandes de contrôle sont :</p>
+<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-text">.privatemode on
+.privatemode off
+.privatememory
+.forgetme
+</code></pre>
+<p><code>.privatemode off</code> désactive le mode et efface le contexte. <code>.forgetme</code> supprime toutes les données contextuelles associées à la conversation.</p>
+<p>La génération IA reste facultative et peut être activée sur le serveur avec les variables d’environnement prévues dans <code>.env.example</code>.</p>
+<h2 id="deploiement-permanent">Déploiement permanent</h2>
+<p>Pour une exécution continue, utilisez un VPS Ubuntu avec Node.js et PM2 :</p>
+<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-bash">npm install --global pm2
+pm2 start launcher.js --name dreadnyx
+pm2 save
+pm2 startup
+</code></pre>
+<p>Les dossiers de session WhatsApp et de données doivent rester présents sur le serveur afin de conserver l’association et les réglages du bot.</p>
 <h2 id="configuration">Configuration</h2>
 <table>
 <thead>
 <tr>
-<th>Fichier</th>
+<th>Élément</th>
 <th>Rôle</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>settings.js</code></td>
-<td>Numéro du propriétaire, liens, messages prédéfinis</td>
+<td>Propriétaire, SUDO, liens et paramètres du bot</td>
 </tr>
 <tr>
-<td><code>index.js</code></td>
-<td>Point d'entrée principal du bot</td>
-</tr>
-<tr>
-<td><code>package.json</code></td>
-<td>Dépendances et scripts npm</td>
-</tr>
-<tr>
-<td><code>crasher.js</code></td>
-<td>Module de crash-testing (importé par bot.js)</td>
+<td><code>launcher.js</code></td>
+<td>Démarrage du bridge WhatsApp et Telegram</td>
 </tr>
 <tr>
 <td><code>commands/</code></td>
-<td>Dossier des commandes modulaires</td>
+<td>Commandes modulaires</td>
+</tr>
+<tr>
+<td><code>data/command-categories.json</code></td>
+<td>Catégories affichées dans le menu</td>
+</tr>
+<tr>
+<td><code>.env</code></td>
+<td>Variables sensibles et options de services</td>
+</tr>
+<tr>
+<td><code>package.json</code></td>
+<td>Dépendances et scripts du projet</td>
 </tr>
 </tbody>
 </table>
-<h2 id="problemes-connus-et-solutions">Problèmes connus et solutions</h2>
-<table>
-<thead>
-<tr>
-<th>Problème</th>
-<th>Solution</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>MODULE_NOT_FOUND: dotenv</code></td>
-<td>Exécuter <code>npm install</code> après le clone</td>
-</tr>
-<tr>
-<td><code>Cannot find module '@adiwajshing/baileys'</code></td>
-<td>Le package <code>@adiwajshing/baileys</code> n'est plus maintenu (dernière version 5.0.0). Le projet utilise désormais <code>@whiskeysockets/baileys</code></td>
-</tr>
-<tr>
-<td>SyntaxError dans <code>settings.js</code></td>
-<td>Corrigé : l'objet <code>global.msg</code> manquait son accolade ouvrante <code>{</code></td>
-</tr>
-<tr>
-<td>Le dossier <code>commands/</code> est vide</td>
-<td>Créer le dossier et y ajouter des fichiers <code>.js</code> au format montré plus haut</td>
-</tr>
-<tr>
-<td>Les fichiers du dossier <code>all/</code> sont absents</td>
-<td><code>crasher.js</code> dépend du dossier <code>all/</code> (functions, database, converters) qui n'est pas inclus dans ce dépôt. Copiez-le depuis votre installation complète</td>
-</tr>
-</tbody>
-</table>
-<h2 id="securite">Sécurité</h2>
-<blockquote>
-<p>⚠️ <strong>Important</strong> : ne commitez jamais de tokens, clés API ou numéros de téléphone en clair dans le code.
-<code>bot.js</code> contenait un token Telegram bot exposé publiquement — il a été remplacé par une lecture depuis la variable d'environnement <code>TELEGRAM_BOT_TOKEN</code>. <strong>Révoquez l'ancien token immédiatement</strong> sur <a href="https://t.me/BotFather">@BotFather</a>.</p>
-</blockquote>
-<p>Utilisez un fichier <code>.env</code> (déjà supporté via <code>dotenv</code>) pour vos valeurs sensibles :</p>
-<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-env">TELEGRAM_BOT_TOKEN=votre_token_ici
-OPENAI_API_KEY=votre_cle_ici
+<p>Exemple de variables d’environnement :</p>
+<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-env">TELEGRAM_BOT_TOKEN=votre_token_telegram
+TELEGRAM_ADMIN_IDS=identifiant_telegram
+PRIVATE_AI_ENABLED=false
+PRIVATE_AI_MODEL=gpt-5-mini
+OPENAI_API_KEY=votre_cle_si_necessaire
+OPENAI_API_BASE=https://api.openai.com/v1
 </code></pre>
+<h2 id="securite">Sécurité</h2>
+<p>Ne publiez jamais de token Telegram, de clé API, de code d’association WhatsApp, de clé privée SSH ou de fichier <code>.env</code> dans un dépôt public. Utilisez les secrets du serveur ou les variables sécurisées de votre plateforme de déploiement.</p>
+<p>Les utilisateurs doivent être informés avant l’activation du mode privé contextuel et doivent pouvoir désactiver ce mode ou supprimer leur contexte avec les commandes prévues.</p>
 <h2 id="me-contacter">Me contacter</h2>
 <ul>
 <li><a href="https://www.youtube.com/@Honor%C3%A9%C3%89minent">YouTube</a></li>
 <li><a href="https://whatsapp.com/channel/0029VbCdHygHAdNdsHFe8p2u">Channel WhatsApp</a></li>
 <li><a href="https://t.me/Jeremie_7k">Telegram</a></li>
 <li><a href="https://t.me/Dreadnyxtest">Groupe Telegram DREADNYX</a></li>
-<li><a href="https://chat.whatsapp.com/EcEtC4NNanJ9zBqqr8qFPH?s=cl&amp;p=a&amp;ilr=0">Groupe de support</a></li>
+<li><a href="https://chat.whatsapp.com/EcEtC4NNanJ9zBqqr8qFPH?s=cl&amp;p=a&amp;ilr=0">Groupe de support WhatsApp</a></li>
 <li><a href="https://www.instagram.com/jeremie_septk">Instagram</a></li>
 </ul>
 <hr>
-<p>© 2025-2026 <strong>Jeremie</strong> · Licence MIT</p>
+<p>© 2025–2026 <strong>Jeremie 7K</strong> · Licence MIT</p>
     </article>
   </main>
   <div class="zoom-hint" aria-hidden="true">Cliquez sur une image ou un bloc de code pour l’agrandir</div>
