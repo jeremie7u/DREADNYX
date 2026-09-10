@@ -100,6 +100,56 @@ cp .env.example .env
 npm start
 </code></pre>
 <p>Le fichier <code>.env</code> doit être complété localement et ne doit jamais être publié dans le dépôt.</p>
+<h2 id="deploiement-avec-github-actions">Déploiement avec GitHub Actions</h2>
+<p>Le dépôt contient un workflow GitHub Actions dans <code>.github/workflows/deploy.yml</code>. Il vérifie le code, installe les dépendances et démarre DREADNYX pour un test distant. Le workflow peut être lancé automatiquement après un <code>push</code> sur <code>main</code> ou manuellement depuis l’onglet <strong>Actions</strong> du dépôt.</p>
+<h3 id="preparer-les-secrets-github">Préparer les secrets GitHub</h3>
+<p>Dans GitHub, ouvrez <strong>Settings → Secrets and variables → Actions → New repository secret</strong>, puis ajoutez les variables suivantes :</p>
+<table>
+<thead>
+<tr>
+<th>Secret</th>
+<th>Valeur</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>TELEGRAM_BOT_TOKEN</code></td>
+<td>Token du bot Telegram</td>
+</tr>
+<tr>
+<td><code>TELEGRAM_ADMIN_IDS</code></td>
+<td>Identifiants Telegram autorisés, séparés par des virgules</td>
+</tr>
+<tr>
+<td><code>PRIVATE_AI_ENABLED</code></td>
+<td><code>true</code> uniquement si le mode IA privé est activé</td>
+</tr>
+<tr>
+<td><code>PRIVATE_AI_MODEL</code></td>
+<td>Par exemple <code>gpt-5-mini</code></td>
+</tr>
+<tr>
+<td><code>OPENAI_API_KEY</code></td>
+<td>Clé du fournisseur IA, uniquement si nécessaire</td>
+</tr>
+<tr>
+<td><code>OPENAI_API_BASE</code></td>
+<td>Adresse de l’API, si elle diffère de la valeur par défaut</td>
+</tr>
+</tbody>
+</table>
+<p>Les secrets ne doivent jamais être placés directement dans <code>README.md</code>, <code>settings.js</code>, un fichier <code>.env</code> versionné ou une commande affichée dans les journaux.</p>
+<h3 id="lancer-le-workflow">Lancer le workflow</h3>
+<ol>
+<li>Ouvrez l’onglet <strong>Actions</strong> du dépôt <a href="https://github.com/jeremie7u/DREADNYX/actions"><code>jeremie7u/DREADNYX</code></a>.</li>
+<li>Sélectionnez <strong>DREADNYX Telegram/WhatsApp test</strong>.</li>
+<li>Cliquez sur <strong>Run workflow</strong>, choisissez la branche <code>main</code>, puis confirmez.</li>
+<li>Consultez les journaux des étapes <strong>Install Node dependencies</strong>, <strong>Validate JavaScript</strong> et <strong>Start application for manual test</strong>.</li>
+<li>Si le bridge Telegram est configuré, utilisez ensuite <code>/connect</code> dans Telegram pour demander l’association WhatsApp.</li>
+</ol>
+<h3 id="limite-du-workflow-github-actions">Limite du workflow GitHub Actions</h3>
+<p>GitHub Actions sert ici à tester et démarrer temporairement le bot. Ce n’est pas un service d’hébergement permanent : le job s’arrête à l’expiration de sa durée maximale ou lorsque GitHub termine l’exécution. Pour une disponibilité continue, déployez le même dépôt sur un VPS avec PM2 ou sur une plateforme persistante compatible avec Node.js. La session WhatsApp et les dossiers de données doivent être conservés sur un stockage persistant.</p>
+<p>La méthode générale reste similaire à celle des déploiements de bots WhatsApp comme Zokou : dépôt GitHub, variables d’environnement, installation Node.js et point d’entrée JavaScript. Elle n’est toutefois pas strictement identique, car DREADNYX utilise son propre workflow, son bridge Telegram et une architecture <code>launcher.js</code>/Baileys différente.</p>
 <h2 id="connexion-whatsapp">Connexion WhatsApp</h2>
 <p>Au premier démarrage, DREADNYX peut utiliser le QR code affiché dans le terminal. Lorsque le bridge Telegram est activé, l’association peut également être demandée depuis le bot Telegram avec la commande :</p>
 <pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-text">/connect

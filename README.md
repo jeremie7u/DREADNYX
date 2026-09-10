@@ -74,6 +74,39 @@ npm start
 
 Le fichier `.env` doit être complété localement et ne doit jamais être publié dans le dépôt.
 
+## Déploiement avec GitHub Actions
+
+Le dépôt contient un workflow GitHub Actions dans `.github/workflows/deploy.yml`. Il vérifie le code, installe les dépendances et démarre DREADNYX pour un test distant. Le workflow peut être lancé automatiquement après un `push` sur `main` ou manuellement depuis l’onglet **Actions** du dépôt.
+
+### Préparer les secrets GitHub
+
+Dans GitHub, ouvrez **Settings → Secrets and variables → Actions → New repository secret**, puis ajoutez les variables suivantes :
+
+| Secret | Valeur |
+|---|---|
+| `TELEGRAM_BOT_TOKEN` | Token du bot Telegram |
+| `TELEGRAM_ADMIN_IDS` | Identifiants Telegram autorisés, séparés par des virgules |
+| `PRIVATE_AI_ENABLED` | `true` uniquement si le mode IA privé est activé |
+| `PRIVATE_AI_MODEL` | Par exemple `gpt-5-mini` |
+| `OPENAI_API_KEY` | Clé du fournisseur IA, uniquement si nécessaire |
+| `OPENAI_API_BASE` | Adresse de l’API, si elle diffère de la valeur par défaut |
+
+Les secrets ne doivent jamais être placés directement dans `README.md`, `settings.js`, un fichier `.env` versionné ou une commande affichée dans les journaux.
+
+### Lancer le workflow
+
+1. Ouvrez l’onglet **Actions** du dépôt [`jeremie7u/DREADNYX`](https://github.com/jeremie7u/DREADNYX/actions).
+2. Sélectionnez **DREADNYX Telegram/WhatsApp test**.
+3. Cliquez sur **Run workflow**, choisissez la branche `main`, puis confirmez.
+4. Consultez les journaux des étapes **Install Node dependencies**, **Validate JavaScript** et **Start application for manual test**.
+5. Si le bridge Telegram est configuré, utilisez ensuite `/connect` dans Telegram pour demander l’association WhatsApp.
+
+### Limite du workflow GitHub Actions
+
+GitHub Actions sert ici à tester et démarrer temporairement le bot. Ce n’est pas un service d’hébergement permanent : le job s’arrête à l’expiration de sa durée maximale ou lorsque GitHub termine l’exécution. Pour une disponibilité continue, déployez le même dépôt sur un VPS avec PM2 ou sur une plateforme persistante compatible avec Node.js. La session WhatsApp et les dossiers de données doivent être conservés sur un stockage persistant.
+
+La méthode générale reste similaire à celle des déploiements de bots WhatsApp comme Zokou : dépôt GitHub, variables d’environnement, installation Node.js et point d’entrée JavaScript. Elle n’est toutefois pas strictement identique, car DREADNYX utilise son propre workflow, son bridge Telegram et une architecture `launcher.js`/Baileys différente.
+
 ## Connexion WhatsApp
 
 Au premier démarrage, DREADNYX peut utiliser le QR code affiché dans le terminal. Lorsque le bridge Telegram est activé, l’association peut également être demandée depuis le bot Telegram avec la commande :
