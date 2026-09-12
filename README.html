@@ -268,6 +268,16 @@ npm start
 </tbody>
 </table>
 <p>Chaque commande utilise un délai de trois secondes afin de limiter les répétitions rapprochées et de préserver une utilisation ordonnée du bot.</p>
+<h3 id="recherche-multimedia">Recherche multimédia</h3>
+<p>Les commandes <code>.song</code> et <code>.video</code> recherchent un contenu à partir de mots-clés, puis envoient respectivement un fichier audio ou vidéo dans la conversation :</p>
+<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-text">.song nom de la musique ou de l’artiste
+.video sujet ou titre de la vidéo
+</code></pre>
+<p>Le serveur doit disposer de <code>yt-dlp</code> et de <code>FFmpeg</code>. Le workflow GitHub Actions les installe automatiquement pour les tests ; sur un VPS Ubuntu, installez-les avec :</p>
+<pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-bash">sudo apt-get update
+sudo apt-get install -y yt-dlp ffmpeg
+</code></pre>
+<p>Les téléchargements sont limités à 16 Mo pour l’audio, 50 Mo pour la vidéo et 120 secondes par requête. Le bot sélectionne un seul résultat, refuse les playlists et supprime le fichier temporaire après son envoi. Utilisez ces commandes uniquement avec des contenus libres de droits, vos propres médias ou des sources qui autorisent explicitement le téléchargement et le partage.</p>
 <h2 id="administration-et-sudo">Administration et SUDO</h2>
 <p>Le propriétaire principal peut gérer les utilisateurs secondaires autorisés :</p>
 <pre class="zoomable" tabindex="0" role="button" aria-label="Agrandir le bloc de code"><code class="language-text">.addsudo numéro

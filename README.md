@@ -165,6 +165,24 @@ Le menu présente les fonctionnalités disponibles et leurs catégories. Les com
 
 Chaque commande utilise un délai de trois secondes afin de limiter les répétitions rapprochées et de préserver une utilisation ordonnée du bot.
 
+### Recherche multimédia
+
+Les commandes `.song` et `.video` recherchent un contenu à partir de mots-clés, puis envoient respectivement un fichier audio ou vidéo dans la conversation :
+
+```text
+.song nom de la musique ou de l’artiste
+.video sujet ou titre de la vidéo
+```
+
+Le serveur doit disposer de `yt-dlp` et de `FFmpeg`. Le workflow GitHub Actions les installe automatiquement pour les tests ; sur un VPS Ubuntu, installez-les avec :
+
+```bash
+sudo apt-get update
+sudo apt-get install -y yt-dlp ffmpeg
+```
+
+Les téléchargements sont limités à 16 Mo pour l’audio, 50 Mo pour la vidéo et 120 secondes par requête. Le bot sélectionne un seul résultat, refuse les playlists et supprime le fichier temporaire après son envoi. Utilisez ces commandes uniquement avec des contenus libres de droits, vos propres médias ou des sources qui autorisent explicitement le téléchargement et le partage.
+
 ## Administration et SUDO
 
 Le propriétaire principal peut gérer les utilisateurs secondaires autorisés :

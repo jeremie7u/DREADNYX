@@ -21,5 +21,7 @@
   "schedulemsg": "automatisation",
   "privatemode": "proprietaire",
   "privatememory": "proprietaire",
-  "forgetme": "proprietaire"
+  "forgetme": "proprietaire",
+  "song": "multimedia",
+  "video": "multimedia"
 }
