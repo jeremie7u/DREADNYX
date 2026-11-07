@@ -39,7 +39,9 @@ function parseCommand(text) {
 
 async function dispatch(message) {
   const command = parseCommand(message.text);
-  if (!command) return null;
+  if (!command) {
+    return `Bonjour${message.profileName ? ` ${message.profileName}` : ''} ! Je suis DREADNYX Cloud API. Écrivez .menu pour afficher les commandes disponibles.`;
+  }
   const handler = supported.get(command.name);
   if (handler) return String(await handler(message, command.args));
   return `La commande .${command.name} existe dans DREADNYX Baileys, mais n'est pas encore migrée vers Cloud API. Elle reste disponible en mode Baileys.`;

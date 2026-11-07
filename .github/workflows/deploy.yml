@@ -25,6 +25,7 @@ jobs:
       META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
       META_GRAPH_VERSION: ${{ secrets.META_GRAPH_VERSION || 'v23.0' }}
       META_WEBHOOK_PORT: ${{ secrets.META_WEBHOOK_PORT || '3000' }}
+      META_REPLY_DELAY_MS: ${{ secrets.META_REPLY_DELAY_MS || '3000' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
