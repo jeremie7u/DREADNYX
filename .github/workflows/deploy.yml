@@ -17,6 +17,14 @@ jobs:
     env:
       TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
       TELEGRAM_ADMIN_IDS: ${{ secrets.TELEGRAM_ADMIN_IDS }}
+      BOT_PROVIDER: ${{ secrets.BOT_PROVIDER || 'baileys' }}
+      META_ACCESS_TOKEN: ${{ secrets.META_ACCESS_TOKEN }}
+      META_PHONE_NUMBER_ID: ${{ secrets.META_PHONE_NUMBER_ID }}
+      META_WABA_ID: ${{ secrets.META_WABA_ID }}
+      META_VERIFY_TOKEN: ${{ secrets.META_VERIFY_TOKEN }}
+      META_APP_SECRET: ${{ secrets.META_APP_SECRET }}
+      META_GRAPH_VERSION: ${{ secrets.META_GRAPH_VERSION || 'v23.0' }}
+      META_WEBHOOK_PORT: ${{ secrets.META_WEBHOOK_PORT || '3000' }}
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -40,4 +48,9 @@ jobs:
           find . -path './node_modules' -prune -o -path './stormbot/node_modules' -prune -o -name '*.js' -print0 | xargs -0 -n1 node --check
 
       - name: Start application for manual test
-        run: timeout 21000s npm start
+        run: |
+          if [ "$BOT_PROVIDER" = "cloud" ]; then
+            timeout 21000s npm run start:cloud
+          else
+            timeout 21000s npm start
+          fi

@@ -5,6 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node launcher.js",
+    "start:cloud": "node cloud-start.js",
     "dev": "node launcher.js",
     "storm": "cd stormbot && node index.js"
   },
