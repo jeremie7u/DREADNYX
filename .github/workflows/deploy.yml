@@ -47,6 +47,19 @@ jobs:
         run: |
           find . -path './node_modules' -prune -o -path './stormbot/node_modules' -prune -o -name '*.js' -print0 | xargs -0 -n1 node --check
 
+      - name: Validate Cloud API secret presence
+        if: env.BOT_PROVIDER == 'cloud'
+        run: |
+          missing=0
+          for name in META_ACCESS_TOKEN META_PHONE_NUMBER_ID META_VERIFY_TOKEN; do
+            if [ -z "${!name}" ]; then
+              echo "Secret manquant: $name"
+              missing=1
+            fi
+          done
+          if [ "$missing" -ne 0 ]; then exit 1; fi
+          echo 'Secrets Cloud API requis détectés; leurs valeurs ne sont pas affichées.'
+
       - name: Start application for manual test
         run: |
           if [ "$BOT_PROVIDER" = "cloud" ]; then
