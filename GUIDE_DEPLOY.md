@@ -12,7 +12,11 @@ CONNECT_MODE=qr
 
 # Identité du bot
 NOM_BOT=DREADNYX
-PREFIXE=.
+# Les seuls préfixes acceptés sont ., / et *
+COMMAND_PREFIXES=.,/,*
+# Identifiant logique de session ; ce n'est pas un token secret
+SESSION_ID=dreadnyx-render
+SESSION_DIR=auth_info_baileys
 
 # Propriétaire (utilisé par les garde-fous du stormbot)
 NUMERO_OWNER=243842068939
@@ -55,7 +59,7 @@ app.koyeb.com/deploy?name=dreadnyx&type=docker&image=docker.io/<votre-dockerhub>
 
 1. Créez un compte sur [Render](https://dashboard.render.com).
 2. Nouveau **Web Service** → **Public Git Repository** → sélectionnez `https://github.com/jeremie7u/DREADNYX`.
-3. Plan gratuit → section **Environment Variables** → **Add from .env** → collez le `.env` de la section 1 (ajoutez `SESSION_ID` / votre session si besoin).
+3. Plan gratuit → section **Environment Variables** → **Add from .env** → ajoutez `COMMAND_PREFIXES=.,/,*`, `SESSION_ID=dreadnyx-render` et les autres variables de la section 1.
 4. Build Command : `npm install && npm run storm:install` · Start Command : `npm start`
 5. **Deploy service**.
 
@@ -83,7 +87,7 @@ jobs:
       - run: timeout 14520s npm start   # relance toutes les 4 heures
 ```
 
-> Sur Render/GitHub Actions, le dossier `auth/` est perdu entre les relances : il faudra re-scanner le QR (ou re-saisir le code de paire) à chaque redémarrage. Pour une connexion permanente, préférez un VPS.
+> `SESSION_ID` choisit le sous-dossier de session (`auth_info_baileys/dreadnyx-render`) et évite les collisions entre sessions. Il ne sauvegarde pas les fichiers si l'hébergement recrée le conteneur : sur le plan gratuit Render, il faudra donc parfois re-scanner le QR ou re-saisir le code de paire après un redéploiement.
 
 ## 6. Déploiement sur Termux (Android)
 

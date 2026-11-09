@@ -1,5 +1,6 @@
 const fs = require('fs');
 const path = require('path');
+const { getPrefixes, matchPrefix } = require('./lib/command-prefixes');
 
 const supported = new Map([
   ['ping', message => 'Pong — DREADNYX Cloud API est opérationnel.'],
@@ -27,14 +28,16 @@ function discoverCommands() {
 
 function helpText() {
   const names = [...supported.keys()].map(name => `.${name}`).join(', ');
-  return `DREADNYX Cloud API\n\nCommandes migrées : ${names}\n\nLes commandes de groupe, Baileys, audio, vidéo et médias restent temporairement disponibles uniquement dans le mode Baileys.`;
+  const prefixes = getPrefixes().join(' ');
+  return `DREADNYX Cloud API\n\nPréfixes actifs : ${prefixes}\nCommandes migrées : ${names}\n\nLes commandes de groupe, Baileys, audio, vidéo et médias restent temporairement disponibles uniquement dans le mode Baileys.`;
 }
 
 function parseCommand(text) {
   const value = String(text || '').trim();
-  if (!value.startsWith('.')) return null;
-  const parts = value.slice(1).split(/\s+/);
-  return { name: parts.shift().toLowerCase(), args: parts };
+  const prefix = matchPrefix(value);
+  if (!prefix) return null;
+  const parts = value.slice(prefix.length).split(/\s+/);
+  return { prefix, name: parts.shift().toLowerCase(), args: parts };
 }
 
 async function dispatch(message) {
@@ -44,7 +47,7 @@ async function dispatch(message) {
   }
   const handler = supported.get(command.name);
   if (handler) return String(await handler(message, command.args));
-  return `La commande .${command.name} existe dans DREADNYX Baileys, mais n'est pas encore migrée vers Cloud API. Elle reste disponible en mode Baileys.`;
+  return `La commande ${command.prefix}${command.name} existe dans DREADNYX Baileys, mais n'est pas encore migrée vers Cloud API. Elle reste disponible en mode Baileys.`;
 }
 
 module.exports = { dispatch, discoverCommands, supported };

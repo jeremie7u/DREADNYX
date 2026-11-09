@@ -11,6 +11,8 @@ module.exports = {
     env: {
       NODE_ENV: 'production',
       BOT_PROVIDER: 'cloud',
+      COMMAND_PREFIXES: '.,/,*',
+      SESSION_ID: 'default',
       META_WEBHOOK_HOST: '0.0.0.0',
       META_WEBHOOK_PORT: '3000',
       META_REPLY_DELAY_MS: '3000'

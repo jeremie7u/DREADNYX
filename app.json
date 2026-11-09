@@ -16,8 +16,18 @@
       "required": false
     },
     "PREFIXE": {
-      "description": "Préfixe des commandes",
+      "description": "Préfixe historique des commandes ; les préfixes actifs sont définis par COMMAND_PREFIXES",
       "value": ".",
+      "required": false
+    },
+    "COMMAND_PREFIXES": {
+      "description": "Préfixes autorisés, uniquement ., / et *",
+      "value": ".,/,*",
+      "required": false
+    },
+    "SESSION_ID": {
+      "description": "Identifiant logique de la session Baileys",
+      "value": "default",
       "required": false
     },
     "NUMERO_OWNER": {
