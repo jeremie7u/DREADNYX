@@ -4,6 +4,8 @@
 
 DREADNYX est un bot WhatsApp multi-appareils basé sur Node.js et Baileys. Il aide à administrer les groupes, automatiser certaines tâches et utiliser des commandes pratiques depuis WhatsApp. Une intégration WhatsApp Cloud API de Meta est également disponible pour les déploiements compatibles avec les webhooks.
 
+Le mode `hybrid` permet de faire tourner le webhook Meta, Baileys et le bridge Telegram dans un seul service Render. **Baileys et Meta Cloud API doivent utiliser deux numéros WhatsApp différents** : un même numéro ne peut pas être connecté aux deux systèmes en même temps.
+
 Créé par [Jeremie 7K](https://github.com/jeremie7u).
 
 ## Fonctionnalités essentielles
@@ -66,6 +68,8 @@ META_WEBHOOK_PORT=3000
 META_WEBHOOK_HOST=0.0.0.0
 ```
 
+Pour le mode hybride sur Render, utilisez `BOT_PROVIDER=hybrid`, conservez les variables `META_*`, et ajoutez les variables Baileys (`CONNECT_MODE`, `SESSION_ID`, `SESSION_DIR`, `NUMERO_OWNER`). Le numéro Baileys est connecté séparément du numéro configuré dans Meta. Ajoutez aussi `TELEGRAM_BOT_TOKEN` et `TELEGRAM_ADMIN_IDS` si le bridge Telegram est souhaité.
+
 Les secrets Meta, Telegram et IA doivent être ajoutés dans les variables sécurisées de l’hébergeur, jamais dans GitHub ou dans `README.md`.
 
 ## Utilisation
@@ -96,13 +100,15 @@ Elles nécessitent `yt-dlp` et FFmpeg sur le serveur. Utilisez uniquement des co
 
 1. Créez un **Web Service** depuis le dépôt GitHub.
 2. Utilisez `npm install` comme commande de build.
-3. Utilisez `npm start` comme commande de démarrage.
+3. Pour le mode Baileys seul, utilisez `npm start`. Pour Meta seul, utilisez `npm run start:cloud`. Pour les deux services dans un même Web Service, utilisez `npm run start:hybrid`.
 4. Ajoutez les variables de `.env.example` dans **Environment**.
-5. Définissez au minimum `COMMAND_PREFIXES=.,/,*` et un `SESSION_ID` unique.
+5. Définissez au minimum `COMMAND_PREFIXES=.,/,*` et un `SESSION_ID` unique. En mode hybride, ajoutez les variables Meta et Telegram nécessaires.
 
 Le plan gratuit Render peut recréer le conteneur et supprimer les fichiers locaux de session. Une nouvelle connexion WhatsApp peut donc être nécessaire après certains redéploiements. Pour une session persistante, utilisez un stockage durable ou un VPS avec PM2.
 
 Guide de déploiement détaillé : [GUIDE_DEPLOY.md](GUIDE_DEPLOY.md).
+
+Un blueprint sans secrets est également fourni dans [`render.yaml`](render.yaml).
 
 ## Structure utile
 

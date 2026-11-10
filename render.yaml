@@ -1,0 +1,40 @@
+services:
+  - type: web
+    name: dreadnyx-hybrid
+    runtime: node
+    plan: free
+    buildCommand: npm install
+    startCommand: npm run start:hybrid
+    envVars:
+      - key: BOT_PROVIDER
+        value: hybrid
+      - key: HYBRID_BAILEYS_ENABLED
+        value: "true"
+      - key: COMMAND_PREFIXES
+        value: ".,/,*"
+      - key: SESSION_ID
+        value: dreadnyx-render
+      - key: SESSION_DIR
+        value: auth_info_baileys
+      - key: META_WEBHOOK_HOST
+        value: 0.0.0.0
+      - key: META_WEBHOOK_PORT
+        value: "10000"
+      - key: META_ACCESS_TOKEN
+        sync: false
+      - key: META_PHONE_NUMBER_ID
+        sync: false
+      - key: META_VERIFY_TOKEN
+        sync: false
+      - key: META_APP_SECRET
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_ADMIN_IDS
+        sync: false
+      - key: CONNECT_MODE
+        value: pairing
+      - key: NUMERO_OWNER
+        sync: false
+      - key: NOM_OWNER
+        value: jeremie

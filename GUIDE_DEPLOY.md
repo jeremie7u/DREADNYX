@@ -7,7 +7,12 @@ Ce guide reproduit les méthodes de déploiement de **Zokou FRENCH V2** (Heroku,
 Comme Zokou avec son `set.env`, créez un fichier `.env` à la racine du dépôt (ou saisissez les variables dans l'interface de l'hébergeur) :
 
 ```env
-# Mode de connexion : qr (défaut) ou pairing (code de paire demandé dans le terminal)
+# Fournisseur : baileys, cloud ou hybrid
+BOT_PROVIDER=hybrid
+# Le mode hybride démarre Meta Cloud API, Baileys et Telegram dans le même service
+HYBRID_BAILEYS_ENABLED=true
+
+# Mode de connexion Baileys : qr ou pairing
 CONNECT_MODE=qr
 
 # Identité du bot
@@ -25,6 +30,18 @@ NOM_OWNER=jeremie
 # StormBot
 HEADLESS=true
 ALLOWED_TARGETS=243842068939,243987391338
+
+# Meta Cloud API : nécessaires en mode hybrid
+META_ACCESS_TOKEN=
+META_PHONE_NUMBER_ID=
+META_VERIFY_TOKEN=
+META_APP_SECRET=
+META_WEBHOOK_HOST=0.0.0.0
+META_WEBHOOK_PORT=10000
+
+# Telegram : nécessaires seulement si le bridge est utilisé
+TELEGRAM_BOT_TOKEN=
+TELEGRAM_ADMIN_IDS=
 ```
 
 > Si `CONNECT_MODE=pairing` : au démarrage, le terminal demande votre numéro, puis affiche le **code de paire à 8 caractères** à valider sur le téléphone (WhatsApp → Appareils liés → Lier un appareil → Lier avec un numéro).
@@ -59,9 +76,11 @@ app.koyeb.com/deploy?name=dreadnyx&type=docker&image=docker.io/<votre-dockerhub>
 
 1. Créez un compte sur [Render](https://dashboard.render.com).
 2. Nouveau **Web Service** → **Public Git Repository** → sélectionnez `https://github.com/jeremie7u/DREADNYX`.
-3. Plan gratuit → section **Environment Variables** → **Add from .env** → ajoutez `COMMAND_PREFIXES=.,/,*`, `SESSION_ID=dreadnyx-render` et les autres variables de la section 1.
-4. Build Command : `npm install && npm run storm:install` · Start Command : `npm start`
+3. Plan gratuit → section **Environment Variables** → **Add from .env** → ajoutez les variables de la section 1. Ne mettez jamais les tokens dans GitHub.
+4. Build Command : `npm install` · Start Command : `npm run start:hybrid`
 5. **Deploy service**.
+
+Le fichier `render.yaml` fournit aussi cette configuration sous forme de blueprint. Les variables marquées `sync: false` doivent être renseignées manuellement dans Render.
 
 ## 5. Déploiement par GitHub Actions (identique à Zokou)
 
@@ -88,6 +107,8 @@ jobs:
 ```
 
 > `SESSION_ID` choisit le sous-dossier de session (`auth_info_baileys/dreadnyx-render`) et évite les collisions entre sessions. Il ne sauvegarde pas les fichiers si l'hébergement recrée le conteneur : sur le plan gratuit Render, il faudra donc parfois re-scanner le QR ou re-saisir le code de paire après un redéploiement.
+
+> Important : le numéro connecté par Baileys et le numéro enregistré dans Meta Cloud API doivent être différents. Le service hybride partage le même processus Node.js, mais les deux comptes WhatsApp restent séparés.
 
 ## 6. Déploiement sur Termux (Android)
 

@@ -1,7 +1,7 @@
 module.exports = {
   apps: [{
-    name: 'dreadnyx-cloud',
-    script: './cloud-start.js',
+    name: 'dreadnyx-hybrid',
+    script: './hybrid-start.js',
     cwd: __dirname,
     instances: 1,
     exec_mode: 'fork',
@@ -10,7 +10,8 @@ module.exports = {
     max_memory_restart: '512M',
     env: {
       NODE_ENV: 'production',
-      BOT_PROVIDER: 'cloud',
+      BOT_PROVIDER: 'hybrid',
+      HYBRID_BAILEYS_ENABLED: 'true',
       COMMAND_PREFIXES: '.,/,*',
       SESSION_ID: 'default',
       META_WEBHOOK_HOST: '0.0.0.0',
