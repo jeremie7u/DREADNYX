@@ -5,6 +5,7 @@ services:
     plan: free
     buildCommand: npm install
     startCommand: npm run start:hybrid
+    healthCheckPath: /health
     envVars:
       - key: BOT_PROVIDER
         value: hybrid

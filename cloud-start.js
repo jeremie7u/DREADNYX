@@ -12,4 +12,4 @@ const { getConfig } = require('./lib/meta-cloud-api');
 getConfig();
 console.log('[Meta] configuration Cloud API chargée depuis les variables d’environnement.');
 
-require('./cloud-entry');
+require('./server');

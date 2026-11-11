@@ -13,8 +13,8 @@ const { getConfig } = require('./lib/meta-cloud-api');
 getConfig();
 console.log('[Hybrid] configuration Meta Cloud API validée.');
 
-// Le webhook Meta occupe le port HTTP public de Render.
-require('./cloud-entry');
+// Le serveur HTTP Render doit écouter avant les connexions WhatsApp.
+require('./server');
 
 if (String(process.env.HYBRID_BAILEYS_ENABLED || 'true').toLowerCase() !== 'false') {
   // Baileys et Telegram tournent dans le même processus, mais avec leur propre session.
