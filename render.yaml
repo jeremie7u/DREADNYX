@@ -17,6 +17,26 @@ services:
         value: dreadnyx-render
       - key: SESSION_DIR
         value: auth_info_baileys
+      - key: SETTINGS_WATCH_ENABLED
+        value: "false"
+      - key: SESSION_BACKUP_ENABLED
+        value: "false"
+      - key: SESSION_BACKUP_INTERVAL_MS
+        value: "60000"
+      - key: SESSION_BACKUP_PREFIX
+        value: dreadnyx-sessions
+      - key: SESSION_BACKUP_KEY
+        sync: false
+      - key: S3_ENDPOINT
+        sync: false
+      - key: S3_REGION
+        value: auto
+      - key: S3_BUCKET
+        sync: false
+      - key: S3_ACCESS_KEY_ID
+        sync: false
+      - key: S3_SECRET_ACCESS_KEY
+        sync: false
       - key: META_WEBHOOK_HOST
         value: 0.0.0.0
       - key: META_WEBHOOK_PORT

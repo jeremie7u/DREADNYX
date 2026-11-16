@@ -16,10 +16,23 @@ console.log('[Hybrid] configuration Meta Cloud API validée.');
 // Le serveur HTTP Render doit écouter avant les connexions WhatsApp.
 require('./server');
 
-if (String(process.env.HYBRID_BAILEYS_ENABLED || 'true').toLowerCase() !== 'false') {
+async function start() {
+  if (String(process.env.HYBRID_BAILEYS_ENABLED || 'true').toLowerCase() === 'false') {
+    console.log('[Hybrid] Baileys désactivé par HYBRID_BAILEYS_ENABLED=false.');
+    return;
+  }
+
+  // Sur Render Free, la session locale est éphémère. La restauration doit
+  // arriver avant le chargement de l'initialisation obfusquée de Baileys.
+  const sessionBackup = require('./lib/session-backup');
+  await sessionBackup.start();
+
   // Baileys et Telegram tournent dans le même processus, mais avec leur propre session.
   require('./launcher');
   console.log('[Hybrid] Baileys et son bridge Telegram sont démarrés.');
-} else {
-  console.log('[Hybrid] Baileys désactivé par HYBRID_BAILEYS_ENABLED=false.');
 }
+
+start().catch((error) => {
+  console.error('[Hybrid] démarrage impossible:', error.message);
+  process.exitCode = 1;
+});

@@ -56,10 +56,16 @@ global.msg = {
 }
 
 
-let file = require.resolve(__filename)
-fs.watchFile(file, () => {
-	fs.unwatchFile(file)
-	console.log(chalk.redBright(`Update ${__filename}`))
-	delete require.cache[file]
-	require(file)
-})
+// Le rechargement automatique est réservé au développement local. Sur Render,
+// fs.watchFile crée un StatWatcher qui reste actif et complique les tests et les
+// arrêts propres du processus.
+if (String(process.env.SETTINGS_WATCH_ENABLED || 'false').toLowerCase() === 'true') {
+	const file = require.resolve(__filename)
+	const watcher = fs.watchFile(file, () => {
+		fs.unwatchFile(file)
+		console.log(chalk.redBright(`Update ${__filename}`))
+		delete require.cache[file]
+		require(file)
+	})
+	watcher.unref?.()
+}
